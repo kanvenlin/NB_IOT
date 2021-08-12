@@ -230,7 +230,6 @@ namespace GonDo_Modbus
         public static void HexStrToHexByte(string str,ref byte[] byteOUT)//陣列轉字串
         {
 
-            // string str = boxHexCalc.Text;
             int i;
             str = str.Replace(" ", "");     //消除空白
             try
