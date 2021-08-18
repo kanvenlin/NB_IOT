@@ -2228,7 +2228,8 @@ namespace NB_iot
             "NULL",
             "土壤水份",
             "PH",
-            "傾斜計"});
+            "傾斜計",
+            "CDT"});
             this.boxType1.Location = new System.Drawing.Point(55, 46);
             this.boxType1.Name = "boxType1";
             this.boxType1.Size = new System.Drawing.Size(88, 24);
