@@ -52,6 +52,9 @@ namespace GonDo_Modbus
 {
     class marco
     {
+
+
+
         public static bool CRC_16(ref byte[] CRC_Data, int Num)    //ref
         {
             ushort crc16 = 0xffff;

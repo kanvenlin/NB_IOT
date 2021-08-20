@@ -156,8 +156,11 @@ Type設定增加空白選項，選擇空白時 ID自動設定為0
 2  增加通道參數 (公式選擇欄位 hex)
 4  取消id 欄位
 
-
-
+********** 2021.08.20 Z6 ***********************
+1、增加讀取記錄資料功能 (CRC)
+2、增加記錄資料解碼功能
+3、增加雨量筒彈跳延遲時間設定
+4、修正bug
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

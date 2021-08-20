@@ -511,6 +511,7 @@ namespace NB_iot
                         chkRain.Checked = true;
                     if ((RXReg[size + 2] & 0x10) != 0)
                         chkBAT.Checked = true;
+                    txtBounce.Text = Convert.ToString(marco.byte2int(RXReg, size+3));
                 }
                 else if ((size = cmd.IndexOf("RCHG")) != -1)    //讀取系數
                 {
@@ -661,11 +662,12 @@ namespace NB_iot
                 if (chkBAT.Checked)
                     x |= 0x10;
                 TXReg[S_SUR.Length+2] = x;
-                SendEnd(ref TXReg, S_SUR.Length + 3);
+                marco.int2byte(txtBounce.Text, ref TXReg, S_SUR.Length + 3);
+                SendEnd(ref TXReg, S_SUR.Length + 5);
             }
             else
             {
-                txtms.Text = "";
+                txtms.Text = txtBounce.Text="";
                 chkBG.Checked=chkAD.Checked = chkProbe.Checked=false;
                 chkRain.Checked = chkBAT.Checked = false;
                 SetTitle(ref TXReg, S_RUR);

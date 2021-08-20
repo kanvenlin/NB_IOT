@@ -333,10 +333,13 @@ namespace NB_iot
             this.tabProbe = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.chkBAT = new System.Windows.Forms.CheckBox();
+            this.txtBounce = new System.Windows.Forms.TextBox();
             this.chkRain = new System.Windows.Forms.CheckBox();
+            this.label97 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.txtms = new System.Windows.Forms.TextBox();
+            this.label96 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.txtms = new System.Windows.Forms.TextBox();
             this.chkProbe = new System.Windows.Forms.CheckBox();
             this.chkAD = new System.Windows.Forms.CheckBox();
             this.chkBG = new System.Windows.Forms.CheckBox();
@@ -3995,10 +3998,13 @@ namespace NB_iot
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.chkBAT);
+            this.groupBox8.Controls.Add(this.txtBounce);
             this.groupBox8.Controls.Add(this.chkRain);
+            this.groupBox8.Controls.Add(this.label97);
             this.groupBox8.Controls.Add(this.label20);
-            this.groupBox8.Controls.Add(this.txtms);
+            this.groupBox8.Controls.Add(this.label96);
             this.groupBox8.Controls.Add(this.label17);
+            this.groupBox8.Controls.Add(this.txtms);
             this.groupBox8.Controls.Add(this.chkProbe);
             this.groupBox8.Controls.Add(this.chkAD);
             this.groupBox8.Controls.Add(this.chkBG);
@@ -4006,7 +4012,7 @@ namespace NB_iot
             this.groupBox8.Controls.Add(this.btnUart);
             this.groupBox8.Location = new System.Drawing.Point(21, 15);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(355, 202);
+            this.groupBox8.Size = new System.Drawing.Size(263, 272);
             this.groupBox8.TabIndex = 12;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Uart";
@@ -4014,58 +4020,89 @@ namespace NB_iot
             // chkBAT
             // 
             this.chkBAT.AutoSize = true;
-            this.chkBAT.Location = new System.Drawing.Point(6, 172);
+            this.chkBAT.Location = new System.Drawing.Point(12, 235);
             this.chkBAT.Name = "chkBAT";
             this.chkBAT.Size = new System.Drawing.Size(147, 20);
             this.chkBAT.TabIndex = 11;
             this.chkBAT.Text = "顯示電池電壓抓取資訊";
             this.chkBAT.UseVisualStyleBackColor = true;
             // 
+            // txtBounce
+            // 
+            this.txtBounce.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtBounce.Location = new System.Drawing.Point(12, 93);
+            this.txtBounce.Name = "txtBounce";
+            this.txtBounce.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtBounce.Size = new System.Drawing.Size(98, 23);
+            this.txtBounce.TabIndex = 10;
+            this.txtBounce.Text = "100";
+            this.txtBounce.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // chkRain
             // 
             this.chkRain.AutoSize = true;
-            this.chkRain.Location = new System.Drawing.Point(6, 147);
+            this.chkRain.Location = new System.Drawing.Point(12, 208);
             this.chkRain.Name = "chkRain";
             this.chkRain.Size = new System.Drawing.Size(123, 20);
             this.chkRain.TabIndex = 11;
             this.chkRain.Text = "顯示雨量抓取資訊";
             this.chkRain.UseVisualStyleBackColor = true;
             // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label97.Location = new System.Drawing.Point(116, 96);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(25, 16);
+            this.label97.TabIndex = 1;
+            this.label97.Text = "ms";
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label20.Location = new System.Drawing.Point(102, 38);
+            this.label20.Location = new System.Drawing.Point(116, 48);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(25, 16);
             this.label20.TabIndex = 1;
             this.label20.Text = "ms";
             // 
-            // txtms
+            // label96
             // 
-            this.txtms.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtms.Location = new System.Drawing.Point(9, 35);
-            this.txtms.Name = "txtms";
-            this.txtms.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtms.Size = new System.Drawing.Size(81, 23);
-            this.txtms.TabIndex = 10;
-            this.txtms.Text = "1000";
-            this.txtms.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.label96.AutoSize = true;
+            this.label96.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label96.Location = new System.Drawing.Point(12, 22);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(140, 16);
+            this.label96.TabIndex = 1;
+            this.label96.Text = "喚醒時抓取資料延遲時間";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label17.Location = new System.Drawing.Point(6, 19);
+            this.label17.Location = new System.Drawing.Point(9, 74);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(104, 16);
+            this.label17.Size = new System.Drawing.Size(116, 16);
             this.label17.TabIndex = 1;
-            this.label17.Text = "喚醒上電延遲時間";
+            this.label17.Text = "雨量筒彈跳延遲時間";
+            // 
+            // txtms
+            // 
+            this.txtms.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtms.Location = new System.Drawing.Point(12, 41);
+            this.txtms.Name = "txtms";
+            this.txtms.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtms.Size = new System.Drawing.Size(98, 23);
+            this.txtms.TabIndex = 10;
+            this.txtms.Text = "500";
+            this.txtms.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // chkProbe
             // 
             this.chkProbe.AutoSize = true;
-            this.chkProbe.Location = new System.Drawing.Point(6, 121);
+            this.chkProbe.Location = new System.Drawing.Point(12, 182);
             this.chkProbe.Name = "chkProbe";
             this.chkProbe.Size = new System.Drawing.Size(126, 20);
             this.chkProbe.TabIndex = 11;
@@ -4075,7 +4112,7 @@ namespace NB_iot
             // chkAD
             // 
             this.chkAD.AutoSize = true;
-            this.chkAD.Location = new System.Drawing.Point(6, 95);
+            this.chkAD.Location = new System.Drawing.Point(12, 156);
             this.chkAD.Name = "chkAD";
             this.chkAD.Size = new System.Drawing.Size(122, 20);
             this.chkAD.TabIndex = 11;
@@ -4085,7 +4122,7 @@ namespace NB_iot
             // chkBG
             // 
             this.chkBG.AutoSize = true;
-            this.chkBG.Location = new System.Drawing.Point(6, 69);
+            this.chkBG.Location = new System.Drawing.Point(12, 130);
             this.chkBG.Name = "chkBG";
             this.chkBG.Size = new System.Drawing.Size(121, 20);
             this.chkBG.TabIndex = 11;
@@ -4095,7 +4132,7 @@ namespace NB_iot
             // btnReadUart
             // 
             this.btnReadUart.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnReadUart.Location = new System.Drawing.Point(266, 121);
+            this.btnReadUart.Location = new System.Drawing.Point(169, 98);
             this.btnReadUart.Name = "btnReadUart";
             this.btnReadUart.Size = new System.Drawing.Size(74, 45);
             this.btnReadUart.TabIndex = 0;
@@ -4106,7 +4143,7 @@ namespace NB_iot
             // btnUart
             // 
             this.btnUart.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnUart.Location = new System.Drawing.Point(266, 35);
+            this.btnUart.Location = new System.Drawing.Point(169, 22);
             this.btnUart.Name = "btnUart";
             this.btnUart.Size = new System.Drawing.Size(74, 54);
             this.btnUart.TabIndex = 0;
@@ -4409,7 +4446,7 @@ namespace NB_iot
             // btnClrTX
             // 
             this.btnClrTX.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnClrTX.Location = new System.Drawing.Point(443, 716);
+            this.btnClrTX.Location = new System.Drawing.Point(463, 713);
             this.btnClrTX.Name = "btnClrTX";
             this.btnClrTX.Size = new System.Drawing.Size(132, 26);
             this.btnClrTX.TabIndex = 4;
@@ -4491,12 +4528,12 @@ namespace NB_iot
             // 
             this.btnSn.BackColor = System.Drawing.SystemColors.Control;
             this.btnSn.Font = new System.Drawing.Font("微軟正黑體", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnSn.Location = new System.Drawing.Point(3, 10);
+            this.btnSn.Location = new System.Drawing.Point(345, 716);
             this.btnSn.Name = "btnSn";
-            this.btnSn.Size = new System.Drawing.Size(31, 26);
+            this.btnSn.Size = new System.Drawing.Size(89, 26);
             this.btnSn.TabIndex = 0;
+            this.btnSn.Text = "記錄資料解碼";
             this.btnSn.UseVisualStyleBackColor = false;
-            this.btnSn.Visible = false;
             this.btnSn.Click += new System.EventHandler(this.btnSn_Click);
             // 
             // btnClose
@@ -4580,7 +4617,7 @@ namespace NB_iot
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(88, 16);
             this.label23.TabIndex = 1;
-            this.label23.Text = "2021.08.04 Z5";
+            this.label23.Text = "2021.08.20 Z6";
             this.label23.Click += new System.EventHandler(this.label23_Click);
             // 
             // txtVerNote
@@ -4635,10 +4672,10 @@ namespace NB_iot
             this.Controls.Add(this.rchTxHex);
             this.Controls.Add(this.rchTx);
             this.Controls.Add(this.rchRxHex);
+            this.Controls.Add(this.btnSn);
             this.Controls.Add(this.rchRx);
             this.Controls.Add(this.btnClrTX);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnSn);
             this.Controls.Add(this.txtSendNum2);
             this.Controls.Add(this.txtSendNum);
             this.Controls.Add(this.txtRecNum);
@@ -5058,6 +5095,9 @@ namespace NB_iot
         private System.Windows.Forms.TextBox txtSetID;
         private System.Windows.Forms.TextBox txtnowID;
         private System.Windows.Forms.Label label94;
+        private System.Windows.Forms.TextBox txtBounce;
+        private System.Windows.Forms.Label label97;
+        private System.Windows.Forms.Label label96;
     }
 }
 
