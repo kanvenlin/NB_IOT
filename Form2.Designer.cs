@@ -41,8 +41,6 @@ namespace NB_iot
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.txtCode = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnConvert = new System.Windows.Forms.Button();
-            this.btnclr = new System.Windows.Forms.Button();
             this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ver = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bat = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +64,8 @@ namespace NB_iot
             this.Rssi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rsrp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Snr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnConvert = new System.Windows.Forms.Button();
+            this.btnclr = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,28 +186,6 @@ namespace NB_iot
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1053, 415);
             this.dataGridView1.TabIndex = 8;
-            // 
-            // btnConvert
-            // 
-            this.btnConvert.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnConvert.Location = new System.Drawing.Point(983, 60);
-            this.btnConvert.Name = "btnConvert";
-            this.btnConvert.Size = new System.Drawing.Size(58, 114);
-            this.btnConvert.TabIndex = 3;
-            this.btnConvert.Text = "轉換";
-            this.btnConvert.UseVisualStyleBackColor = true;
-            this.btnConvert.Click += new System.EventHandler(this.btnConvert_Click);
-            // 
-            // btnclr
-            // 
-            this.btnclr.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnclr.Location = new System.Drawing.Point(932, 611);
-            this.btnclr.Name = "btnclr";
-            this.btnclr.Size = new System.Drawing.Size(109, 40);
-            this.btnclr.TabIndex = 3;
-            this.btnclr.Text = "清除";
-            this.btnclr.UseVisualStyleBackColor = true;
-            this.btnclr.Click += new System.EventHandler(this.btnclr_Click);
             // 
             // Num
             // 
@@ -346,6 +324,28 @@ namespace NB_iot
             this.Snr.HeaderText = "SNR";
             this.Snr.Name = "Snr";
             this.Snr.Width = 52;
+            // 
+            // btnConvert
+            // 
+            this.btnConvert.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnConvert.Location = new System.Drawing.Point(983, 60);
+            this.btnConvert.Name = "btnConvert";
+            this.btnConvert.Size = new System.Drawing.Size(58, 114);
+            this.btnConvert.TabIndex = 3;
+            this.btnConvert.Text = "轉換";
+            this.btnConvert.UseVisualStyleBackColor = true;
+            this.btnConvert.Click += new System.EventHandler(this.btnConvert_Click);
+            // 
+            // btnclr
+            // 
+            this.btnclr.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnclr.Location = new System.Drawing.Point(932, 611);
+            this.btnclr.Name = "btnclr";
+            this.btnclr.Size = new System.Drawing.Size(109, 40);
+            this.btnclr.TabIndex = 3;
+            this.btnclr.Text = "清除";
+            this.btnclr.UseVisualStyleBackColor = true;
+            this.btnclr.Click += new System.EventHandler(this.btnclr_Click);
             // 
             // Form2
             // 

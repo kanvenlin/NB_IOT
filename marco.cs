@@ -234,6 +234,7 @@ namespace GonDo_Modbus
         {
 
             int i;
+            str= str.Replace("\r\n", "");
             str = str.Replace(" ", "");     //消除空白
             try
             {
