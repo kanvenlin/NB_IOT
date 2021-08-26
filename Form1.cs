@@ -513,10 +513,14 @@ namespace NB_iot
                         chkBAT.Checked = true;
                     txtBounce.Text = Convert.ToString(marco.byte2int(RXReg, size+3));
                 }
+                else  if((size = cmd.IndexOf("BUG")) != -1)
+                {
+                    size += 3;
+                    txtbug.Text = RXReg[size].ToString();
+                }
                 else if ((size = cmd.IndexOf("RCHG")) != -1)    //讀取系數
                 {
-
-           
+         
                     size += 4;
                    if (size != 5)
                         j = 0;   
@@ -585,8 +589,13 @@ namespace NB_iot
         string S_RTC_SetAE = "$01TIE";          //設定AE 
         string S_SUR    = "$01SUR";          //設定Uart顯示資訊 
         string S_RUR = "$01RUR";            //讀取Uart顯示資訊 
-   
+        string S_BUG = "$BUG";      //讀取bug                
 
+        private void btnbug_Click(object sender, EventArgs e)
+        {
+            SetTitle(ref TXReg, S_BUG);
+            SendEnd(ref TXReg, S_BUG.Length);
+        }
         private void btnSymTime_Click(object sender, EventArgs e)
         {
             SetTitle(ref TXReg, S_SYS_Time);  //同步系統時間
@@ -719,11 +728,14 @@ namespace NB_iot
                                         //    string S_VER = "$VER";          //讀取版本
         string S_CVR = "$CVR";          //讀取程式版本
         string S_REC_Clr = "$01CLR";    //清除記錄和傳送筆數
+      
         private void btnRec_Click(object sender, EventArgs e)   //讀取紀錄/傳送筆數
         {
             SetTitle(ref TXReg, S_ReadRec);
-            SendEnd(ref TXReg, S_ReadRec.Length);
+            SendEnd(ref TXReg, S_ReadRec.Length);  
         }
+
+ 
         private void btnReadID_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("確定清除", "清除提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -1325,6 +1337,8 @@ namespace NB_iot
             r.SelectionStart = r.Text.Length;
             r.ScrollToCaret();
         }
+
+
 
         private void btnReadStr_Click(object sender, EventArgs e)
         {

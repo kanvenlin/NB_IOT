@@ -395,6 +395,8 @@ namespace NB_iot
             this.label86 = new System.Windows.Forms.Label();
             this.txtSendNum2 = new System.Windows.Forms.TextBox();
             this.chknormal = new System.Windows.Forms.CheckBox();
+            this.btnbug = new System.Windows.Forms.Button();
+            this.txtbug = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.tabFunc.SuspendLayout();
             this.tabRTC.SuspendLayout();
@@ -3987,6 +3989,8 @@ namespace NB_iot
             // tabProbe
             // 
             this.tabProbe.Controls.Add(this.groupBox8);
+            this.tabProbe.Controls.Add(this.txtbug);
+            this.tabProbe.Controls.Add(this.btnbug);
             this.tabProbe.Location = new System.Drawing.Point(4, 25);
             this.tabProbe.Name = "tabProbe";
             this.tabProbe.Padding = new System.Windows.Forms.Padding(3);
@@ -4615,9 +4619,9 @@ namespace NB_iot
             this.label23.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label23.Location = new System.Drawing.Point(861, 721);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(88, 16);
+            this.label23.Size = new System.Drawing.Size(98, 16);
             this.label23.TabIndex = 1;
-            this.label23.Text = "2021.08.20 Z6";
+            this.label23.Text = "2021.08.23 Z6.1";
             this.label23.Click += new System.EventHandler(this.label23_Click);
             // 
             // txtVerNote
@@ -4662,6 +4666,28 @@ namespace NB_iot
             this.chknormal.Text = "讀取Hex";
             this.chknormal.UseVisualStyleBackColor = true;
             this.chknormal.CheckedChanged += new System.EventHandler(this.chkTxHex_CheckedChanged);
+            // 
+            // btnbug
+            // 
+            this.btnbug.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnbug.Location = new System.Drawing.Point(180, 323);
+            this.btnbug.Name = "btnbug";
+            this.btnbug.Size = new System.Drawing.Size(74, 45);
+            this.btnbug.TabIndex = 0;
+            this.btnbug.Text = "讀取";
+            this.btnbug.UseVisualStyleBackColor = true;
+            this.btnbug.Click += new System.EventHandler(this.btnbug_Click);
+            // 
+            // txtbug
+            // 
+            this.txtbug.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtbug.Location = new System.Drawing.Point(29, 345);
+            this.txtbug.Name = "txtbug";
+            this.txtbug.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtbug.Size = new System.Drawing.Size(98, 23);
+            this.txtbug.TabIndex = 10;
+            this.txtbug.Text = "0";
+            this.txtbug.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Form1
             // 
@@ -4723,6 +4749,7 @@ namespace NB_iot
             this.tabCHG.ResumeLayout(false);
             this.tabCHG.PerformLayout();
             this.tabProbe.ResumeLayout(false);
+            this.tabProbe.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.tabCRC.ResumeLayout(false);
@@ -5098,6 +5125,8 @@ namespace NB_iot
         private System.Windows.Forms.TextBox txtBounce;
         private System.Windows.Forms.Label label97;
         private System.Windows.Forms.Label label96;
+        private System.Windows.Forms.TextBox txtbug;
+        private System.Windows.Forms.Button btnbug;
     }
 }
 

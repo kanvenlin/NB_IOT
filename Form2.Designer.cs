@@ -181,10 +181,10 @@ namespace NB_iot
             this.Rssi,
             this.Rsrp,
             this.Snr});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 190);
+            this.dataGridView1.Location = new System.Drawing.Point(32, 190);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1053, 415);
+            this.dataGridView1.Size = new System.Drawing.Size(1053, 435);
             this.dataGridView1.TabIndex = 8;
             // 
             // Num
@@ -339,7 +339,7 @@ namespace NB_iot
             // btnclr
             // 
             this.btnclr.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnclr.Location = new System.Drawing.Point(932, 611);
+            this.btnclr.Location = new System.Drawing.Point(976, 631);
             this.btnclr.Name = "btnclr";
             this.btnclr.Size = new System.Drawing.Size(109, 40);
             this.btnclr.TabIndex = 3;
