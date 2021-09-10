@@ -513,11 +513,6 @@ namespace NB_iot
                         chkBAT.Checked = true;
                     txtBounce.Text = Convert.ToString(marco.byte2int(RXReg, size+3));
                 }
-                else  if((size = cmd.IndexOf("BUG")) != -1)
-                {
-                    size += 3;
-                    txtbug.Text = RXReg[size].ToString();
-                }
                 else if ((size = cmd.IndexOf("RCHG")) != -1)    //讀取系數
                 {
          
@@ -589,12 +584,20 @@ namespace NB_iot
         string S_RTC_SetAE = "$01TIE";          //設定AE 
         string S_SUR    = "$01SUR";          //設定Uart顯示資訊 
         string S_RUR = "$01RUR";            //讀取Uart顯示資訊 
-        string S_BUG = "$BUG";      //讀取bug                
+        string S_TST = "$TST";             //測試硬體       
 
-        private void btnbug_Click(object sender, EventArgs e)
+        private void btnTest_Click(object sender, EventArgs e)
         {
-            SetTitle(ref TXReg, S_BUG);
-            SendEnd(ref TXReg, S_BUG.Length);
+            byte test=0;
+            if (chkFLASH.Checked == true)
+                test |= 1;
+            if (chkEEP.Checked == true)
+                test |= 2;
+            if (chkSD.Checked == true)
+                test |= 4;
+            SetTitle(ref TXReg, S_TST);
+            TXReg[S_TST.Length] = test;
+            SendEnd(ref TXReg, S_TST.Length+1);
         }
         private void btnSymTime_Click(object sender, EventArgs e)
         {
@@ -1337,8 +1340,6 @@ namespace NB_iot
             r.SelectionStart = r.Text.Length;
             r.ScrollToCaret();
         }
-
-
 
         private void btnReadStr_Click(object sender, EventArgs e)
         {
