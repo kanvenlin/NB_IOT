@@ -42,7 +42,7 @@ namespace NB_iot
             tabFunc.Enabled = false;
             checktriggle(true);     //設定文字輸入的觸發事件
             btnRec.Enabled = false;
-
+            chkASCII.Visible = false;
             foreach (string str in boxType1.Items)
             {
                 boxType2.Items.Add(str);
@@ -59,7 +59,6 @@ namespace NB_iot
             boxType6.SelectedIndex = 0;
             boxType7.SelectedIndex = 0;
             boxType8.SelectedIndex = 0;
-
         }
 
         private void boxHour_TextChanged(object sender, EventArgs e)
@@ -588,10 +587,16 @@ namespace NB_iot
 
         private void btnTest_Click(object sender, EventArgs e)
         {
+            chknormal.Checked = true;
+            chkASCII.Checked = true;
+            rchRxHex.Visible = true;
+            rchRx.Visible = false;
+
+
             byte test=0;
+          if (chkEEP.Checked == true)
+                test |= 1;    
             if (chkFLASH.Checked == true)
-                test |= 1;
-            if (chkEEP.Checked == true)
                 test |= 2;
             if (chkSD.Checked == true)
                 test |= 4;
@@ -1266,12 +1271,12 @@ namespace NB_iot
                 if (box.Checked == true)
                 {
                     rchTxHex.Visible = true;
-                    rchTx.Visible = false;
+                    rchTx.Visible = false;                
                 }
                 else
                 {
                     rchTxHex.Visible = false;
-                    rchTx.Visible = true;
+                    chkASCII.Visible = false;
                 }
             }
             else
@@ -1280,6 +1285,9 @@ namespace NB_iot
                 {           
                         rchRxHex.Visible = true;
                         rchRx.Visible = false;
+                        chkASCII.Visible = false;
+                        if(chknormal.Checked)                  
+                          chkASCII.Visible = true;
                 }
                 else
                 {
@@ -1287,8 +1295,9 @@ namespace NB_iot
                     {
                         rchRx.Visible = true;
                         rchRxHex.Visible = false;
-                    }
-        
+                        if (!chknormal.Checked)
+                            chkASCII.Visible = false;
+                    }     
                 }
             }
         }
@@ -1503,101 +1512,111 @@ namespace NB_iot
             {
                 checktriggle(false);    //關閉box 輸入觸發
                 str1 = null;
-              
 
-                if (CmdStart_f && ReadCnt != 0)
-                    ReadCnt = 0;
-                for (int i = 0; i < ByteCnt; i++)
+                if (chkASCII.Checked == true && chknormal.Checked == true && ByteCnt != 0)
                 {
-
-                    if ((RXReg[i] == '!' || CmdStart_f == true) && (chknormal.Checked == false))      //起始位置
-                    {
-                        if (RXReg[i] == '!' && CmdStart_f == false)
-                        {
-                            ReadCnt = 0;
-                            cmdstr = "";
-                            timer2.Enabled = true;      //打開time2中斷，時間內若未完成，則取消此次接收
-                        }
-                        CmdStart_f = true;
-                        ReadCnt++;
-
-                        cmdstr += Convert.ToString((char)RXReg[i]);     //讀取接收的指令
-                        if (cmdstr.EndsWith("\r\n"))
-                        {
-                     //       cmdstr = System.Text.Encoding.ASCII.GetString(RXReg).Trim();
-
-
-                            cmdstr = System.Text.Encoding.ASCII.GetString(RXReg,0,ReadCnt);
-
-
-                            CmdStart_f = false;
-                            GetCmd_f = true;
-                            timer2.Enabled = false;
-                            ByteCnt = 0;
-                        }
-                    }
-                    else
-                    {
-                        str1 += Convert.ToString((char)RXReg[i]);         
-                        CmdStart_f = false;
-                    }
-                }
-
-                if (GetCmd_f == true)                     //若是收到指令
-                {
-                    GetCmd_f = false;
-                    //
-                    //
-              //      RXReg= System.Text.Encoding.Default.GetBytes(cmdstr);
-                    GetUartCMD(cmdstr);
-                    cmdstr = null;
-
-                }
-                else if (str1 != null)  //GetCmd_f == false && 
-                {
-                    //    boxRXHex.Items.Add(BitConverter.ToString(RXReg, 0, ByteCnt));       //edit
-                    //   boxRXHex.SelectedIndex = boxRXHex.Items.Count - 1;
-                    //     boxRX.Items.Add(str1);
-                    //    boxRX.SelectedIndex = boxRX.Items.Count - 1;
-                  
-                    string[] str = str1.Split('\n');
-                    for(i=0;i<str.Length;i++)
-                    {
-                        if (str[i].EndsWith("\r") != true)
-                        {
-                            str[i] += "\n";                          
-                        }
-                        rchRx.Text += str[i];                     
-                    }
-
-                    int len = 0;        //為了讓接收到0d 0a的字串時換行符號可以實現 ，故判斷是否抓到0a ，若是則加上 "\r\n" 的換行符號。
-                    str1 = "";
-            
-                    for (i = 0; i < ByteCnt; i++)
-                    {
-                        if (RXReg[i] == 0xd)
-                        {
-                            chk0d_f = true;
-                            continue;
-                        }
-                        if (chk0d_f && RXReg[i] == 0xa)
-                        {
-                            str1 += BitConverter.ToString(RXReg, len, (i - len) + 1) + "\r\n";  //抓取長度為暫存器位置+1
-                            len = i + 1;        //此次抓取的長度，為下次判斷的起始位
-                        }
-                         chk0d_f = false;
-                    }
-                    if (len != ByteCnt)
-                        str1 += BitConverter.ToString(RXReg, len, ByteCnt - len);
-                    rchRxHex.Text += str1.Replace("-", " "); ;
+                    rchRxHex.Text += System.Text.Encoding.ASCII.GetString(RXReg, 0, ByteCnt);
                     ByteCnt = 0;
-                    //  rchRxHex.Text += BitConverter.ToString(RXReg, 0, ByteCnt) + "\r\n"; 此方式不會自動換行
                 }
-           //     if (ByteCnt < 300)
-             //       i = 0;
-            //    GetStar_f = false;
-            
-                checktriggle(true);
+                else
+                {
+
+
+                    if (CmdStart_f && ReadCnt != 0)
+                        ReadCnt = 0;
+
+
+
+
+                    for (int i = 0; i < ByteCnt; i++)
+                    {
+
+                        if ((RXReg[i] == '!' || CmdStart_f == true) && (chknormal.Checked == false))      //起始位置
+                        {
+                            if (RXReg[i] == '!' && CmdStart_f == false)
+                            {
+                                ReadCnt = 0;
+                                cmdstr = "";
+                                timer2.Enabled = true;      //打開time2中斷，時間內若未完成，則取消此次接收
+                            }
+                            CmdStart_f = true;
+                            ReadCnt++;
+
+                            cmdstr += Convert.ToString((char)RXReg[i]);     //讀取接收的指令
+                            if (cmdstr.EndsWith("\r\n"))
+                            {
+                                //       cmdstr = System.Text.Encoding.ASCII.GetString(RXReg).Trim();
+
+
+                                cmdstr = System.Text.Encoding.ASCII.GetString(RXReg, 0, ReadCnt);
+
+
+                                CmdStart_f = false;
+                                GetCmd_f = true;
+                                timer2.Enabled = false;
+                                ByteCnt = 0;
+                            }
+                        }
+                        else
+                        {
+                            str1 += Convert.ToString((char)RXReg[i]);
+                            CmdStart_f = false;
+                        }
+                    }
+
+                    if (GetCmd_f == true)                     //若是收到指令
+                    {
+                        GetCmd_f = false;
+                        //
+                        //
+                        //      RXReg= System.Text.Encoding.Default.GetBytes(cmdstr);
+                        GetUartCMD(cmdstr);
+                        cmdstr = null;
+
+                    }
+                    else if (str1 != null)  //GetCmd_f == false && 
+                    {
+                        //    boxRXHex.Items.Add(BitConverter.ToString(RXReg, 0, ByteCnt));       //edit
+                        //   boxRXHex.SelectedIndex = boxRXHex.Items.Count - 1;
+                        //     boxRX.Items.Add(str1);
+                        //    boxRX.SelectedIndex = boxRX.Items.Count - 1;
+
+                        string[] str = str1.Split('\n');
+                        for (i = 0; i < str.Length; i++)
+                        {
+                            if (str[i].EndsWith("\r") != true)
+                            {
+                                str[i] += "\n";
+                            }
+                            rchRx.Text += str[i];
+                        }
+
+                        int len = 0;        //為了讓接收到0d 0a的字串時換行符號可以實現 ，故判斷是否抓到0a ，若是則加上 "\r\n" 的換行符號。
+                        str1 = "";
+
+                        for (i = 0; i < ByteCnt; i++)
+                        {
+                            if (RXReg[i] == 0xd)
+                            {
+                                chk0d_f = true;
+                                continue;
+                            }
+                            if (chk0d_f && RXReg[i] == 0xa)
+                            {
+                                str1 += BitConverter.ToString(RXReg, len, (i - len) + 1) + "\r\n";  //抓取長度為暫存器位置+1
+                                len = i + 1;        //此次抓取的長度，為下次判斷的起始位
+                            }
+                            chk0d_f = false;
+                        }
+                        if (len != ByteCnt)
+                            str1 += BitConverter.ToString(RXReg, len, ByteCnt - len);
+
+                        rchRxHex.Text += str1.Replace("-", " "); ;
+                        ByteCnt = 0;
+                        //  rchRxHex.Text += BitConverter.ToString(RXReg, 0, ByteCnt) + "\r\n"; 此方式不會自動換行
+                    }
+                }
+             checktriggle(true);
          }
         }
 

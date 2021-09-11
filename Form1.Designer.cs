@@ -400,6 +400,7 @@ namespace NB_iot
             this.label86 = new System.Windows.Forms.Label();
             this.txtSendNum2 = new System.Windows.Forms.TextBox();
             this.chknormal = new System.Windows.Forms.CheckBox();
+            this.chkASCII = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabFunc.SuspendLayout();
             this.tabRTC.SuspendLayout();
@@ -4631,7 +4632,7 @@ namespace NB_iot
             // rchRx
             // 
             this.rchRx.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.rchRx.Location = new System.Drawing.Point(463, 395);
+            this.rchRx.Location = new System.Drawing.Point(462, 394);
             this.rchRx.Name = "rchRx";
             this.rchRx.Size = new System.Drawing.Size(524, 307);
             this.rchRx.TabIndex = 12;
@@ -4662,7 +4663,7 @@ namespace NB_iot
             // rchRxHex
             // 
             this.rchRxHex.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.rchRxHex.Location = new System.Drawing.Point(463, 399);
+            this.rchRxHex.Location = new System.Drawing.Point(462, 395);
             this.rchRxHex.Name = "rchRxHex";
             this.rchRxHex.Size = new System.Drawing.Size(524, 307);
             this.rchRxHex.TabIndex = 12;
@@ -4684,10 +4685,10 @@ namespace NB_iot
             // txtVerNote
             // 
             this.txtVerNote.Font = new System.Drawing.Font("微軟正黑體", 10F);
-            this.txtVerNote.Location = new System.Drawing.Point(462, 53);
+            this.txtVerNote.Location = new System.Drawing.Point(463, 51);
             this.txtVerNote.Multiline = true;
             this.txtVerNote.Name = "txtVerNote";
-            this.txtVerNote.Size = new System.Drawing.Size(527, 654);
+            this.txtVerNote.Size = new System.Drawing.Size(524, 308);
             this.txtVerNote.TabIndex = 13;
             this.txtVerNote.Text = resources.GetString("txtVerNote.Text");
             this.txtVerNote.Visible = false;
@@ -4724,6 +4725,17 @@ namespace NB_iot
             this.chknormal.UseVisualStyleBackColor = true;
             this.chknormal.CheckedChanged += new System.EventHandler(this.chkTxHex_CheckedChanged);
             // 
+            // chkASCII
+            // 
+            this.chkASCII.AutoSize = true;
+            this.chkASCII.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.chkASCII.Location = new System.Drawing.Point(638, 368);
+            this.chkASCII.Name = "chkASCII";
+            this.chkASCII.Size = new System.Drawing.Size(80, 20);
+            this.chkASCII.TabIndex = 3;
+            this.chkASCII.Text = "顯示ASCII";
+            this.chkASCII.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4740,6 +4752,7 @@ namespace NB_iot
             this.Controls.Add(this.txtSendNum2);
             this.Controls.Add(this.txtSendNum);
             this.Controls.Add(this.txtRecNum);
+            this.Controls.Add(this.chkASCII);
             this.Controls.Add(this.chknormal);
             this.Controls.Add(this.chkRxHex);
             this.Controls.Add(this.chkTxHex);
@@ -5166,6 +5179,7 @@ namespace NB_iot
         private System.Windows.Forms.CheckBox chkFLASH;
         private System.Windows.Forms.CheckBox chkEEP;
         private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.CheckBox chkASCII;
     }
 }
 
