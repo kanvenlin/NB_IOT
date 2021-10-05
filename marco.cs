@@ -90,11 +90,18 @@ namespace GonDo_Modbus
                 str=str.Insert(0, "0");
             crc = System.Text.Encoding.Default.GetBytes(str);
 
-            if ((crc[0] != CRC_Data[Num-2]) || (crc[1] != CRC_Data[Num - 1]))
-                last_bit = false;
-             CRC_Data[Num-2] = crc[0];
-             CRC_Data[Num - 1] = crc[1];
-            return last_bit;
+            try
+            {
+                if ((crc[0] != CRC_Data[Num - 2]) || (crc[1] != CRC_Data[Num - 1]))
+                    last_bit = false;
+                CRC_Data[Num - 2] = crc[0];
+                CRC_Data[Num - 1] = crc[1];
+                return last_bit;
+            }
+            catch(Exception)
+            {
+                return last_bit = false;
+            }
         }
 
     
