@@ -587,12 +587,16 @@ namespace NB_iot
 
         private void btnTest_Click(object sender, EventArgs e)
         {
+            /*
+             * $TSTb
+             * 0x1  checkeep
+             * 0x2  checkflash
+             * 0x4  checksd
+             * */
             chknormal.Checked = true;
             chkASCII.Checked = true;
             rchRxHex.Visible = true;
             rchRx.Visible = false;
-
-
             byte test=0;
           if (chkEEP.Checked == true)
                 test |= 1;    

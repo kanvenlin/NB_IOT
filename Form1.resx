@@ -161,6 +161,9 @@ Type設定增加空白選項，選擇空白時 ID自動設定為0
 2、增加記錄資料解碼功能
 3、增加雨量筒彈跳延遲時間設定
 4、修正bug
+
+********** 2021.10.05 Z7 ***********************
+1、增加NTU 設定功能
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
