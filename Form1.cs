@@ -37,6 +37,8 @@ namespace NB_iot
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           
+
 
             Serialcom.GetPort(boxCom);
             tabFunc.Enabled = false;
@@ -59,6 +61,9 @@ namespace NB_iot
             boxType6.SelectedIndex = 0;
             boxType7.SelectedIndex = 0;
             boxType8.SelectedIndex = 0;
+
+      
+
         }
 
         private void boxHour_TextChanged(object sender, EventArgs e)
@@ -1279,8 +1284,8 @@ namespace NB_iot
                 }
                 else
                 {
-                    rchTxHex.Visible = false;
-                    chkASCII.Visible = false;
+                   rchTxHex.Visible = false;
+                    rchTx.Visible = true;
                 }
             }
             else
@@ -1356,7 +1361,7 @@ namespace NB_iot
 
         private void btnReadStr_Click(object sender, EventArgs e)
         {
-           
+        //    string tiptext = "";
             Button btn = (Button)sender;
             if (btn.Name == "btnReadStr")
                 boxStr.Text = "$01LADR00000010000001";
@@ -1385,30 +1390,64 @@ namespace NB_iot
             }
         }
 
+        public void SetTip(ComboBox cb,TextBox id,TextBox tx)
+        {
+            string tiptext = "";
+
+            switch (cb.SelectedIndex)
+            {
+                /*  case 0:
+                      tiptext = "null";
+                      id.Text = "0";
+                      break;*/
+                case 1:
+                    tiptext = "介電常數、容積含水率、溫度";
+                    break;
+                case 2:
+                    tiptext = "PH、溫度";
+                    break;
+                case 3:
+                    tiptext = "電池電壓、溫度、Z、Y、X";
+                    break;
+                case 4:
+                    tiptext = "電導率、溫度、壓力";
+                    break;
+                case 5:
+                    tiptext = "透明度、懸浮物、濁度、溫度";
+                    break;
+
+                default:
+                    tiptext = "null";
+                    id.Text = "0";
+                    break;
+            }
+                toolTip1.SetToolTip(tx, tiptext);
+        }
+
         private void boxType1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox t = (ComboBox)sender;
-            if(t.Text=="")
-            {
-                if(t.Name== "boxType1")
-                    boxID1.Text = "0";
-                else if (t.Name == "boxType2")
-                    boxID2.Text = "0";
-                else if (t.Name == "boxType3")
-                    boxID3.Text = "0";
-                else if (t.Name == "boxType4")
-                    boxID4.Text = "0";
-                else if (t.Name == "boxType5")
-                    boxID5.Text = "0";
-                else if (t.Name == "boxType6")
-                    boxID6.Text = "0";
-                else if (t.Name == "boxType7")
-                    boxID7.Text = "0";
-                else 
-                    boxID8.Text = "0";
-            }
-        }
 
+            if (t.Name == "boxType1")
+                    SetTip(boxType1, boxID1, boxData1);
+            else if (t.Name == "boxType2")     
+                    SetTip(boxType2, boxID2, boxData2);  
+            else if (t.Name == "boxType3")
+                    SetTip(boxType3, boxID3, boxData3);
+            else if (t.Name == "boxType4")
+                SetTip(boxType4, boxID4, boxData4);
+            else if (t.Name == "boxType5")
+                SetTip(boxType5, boxID5, boxData5);
+
+            else if (t.Name == "boxType6")
+                SetTip(boxType6, boxID6, boxData6);
+
+            else if (t.Name == "boxType7")
+                SetTip(boxType7, boxID7, boxData7);
+            else
+                SetTip(boxType8, boxID8, boxData8);
+
+        }
 
 
         /*

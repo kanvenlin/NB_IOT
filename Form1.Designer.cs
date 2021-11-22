@@ -215,9 +215,6 @@ namespace NB_iot
             this.label58 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.boxData1 = new System.Windows.Forms.TextBox();
-            this.label90 = new System.Windows.Forms.Label();
-            this.label89 = new System.Windows.Forms.Label();
-            this.label88 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.boxID1 = new System.Windows.Forms.TextBox();
             this.tabCHG = new System.Windows.Forms.TabPage();
@@ -401,7 +398,7 @@ namespace NB_iot
             this.txtSendNum2 = new System.Windows.Forms.TextBox();
             this.chknormal = new System.Windows.Forms.CheckBox();
             this.chkASCII = new System.Windows.Forms.CheckBox();
-            this.label95 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.tabFunc.SuspendLayout();
             this.tabRTC.SuspendLayout();
@@ -2141,10 +2138,6 @@ namespace NB_iot
             this.tabPage1.Controls.Add(this.label58);
             this.tabPage1.Controls.Add(this.label49);
             this.tabPage1.Controls.Add(this.boxData1);
-            this.tabPage1.Controls.Add(this.label95);
-            this.tabPage1.Controls.Add(this.label90);
-            this.tabPage1.Controls.Add(this.label89);
-            this.tabPage1.Controls.Add(this.label88);
             this.tabPage1.Controls.Add(this.label48);
             this.tabPage1.Controls.Add(this.boxID1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
@@ -2553,36 +2546,7 @@ namespace NB_iot
             this.boxData1.TabIndex = 10;
             this.boxData1.Text = "0";
             this.boxData1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label90.Location = new System.Drawing.Point(38, 424);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(208, 16);
-            this.label90.TabIndex = 1;
-            this.label90.Text = "傾斜計   ：電池電壓、溫度、Z、Y、X";
-            // 
-            // label89
-            // 
-            this.label89.AutoSize = true;
-            this.label89.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label89.Location = new System.Drawing.Point(38, 408);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(120, 16);
-            this.label89.TabIndex = 1;
-            this.label89.Text = "PH          ：PH、溫度";
-            // 
-            // label88
-            // 
-            this.label88.AutoSize = true;
-            this.label88.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label88.Location = new System.Drawing.Point(38, 392);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(221, 16);
-            this.label88.TabIndex = 1;
-            this.label88.Text = "土壤水份 : 介電常數、容積含水率、溫度";
+            this.toolTip1.SetToolTip(this.boxData1, "NTU   ：透明度、懸浮物、濁度、溫度");
             // 
             // label48
             // 
@@ -4682,7 +4646,7 @@ namespace NB_iot
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(91, 16);
             this.label23.TabIndex = 1;
-            this.label23.Text = "2021.10.05  Z7";
+            this.label23.Text = "2021.10.08  Z7";
             this.label23.Click += new System.EventHandler(this.label23_Click);
             // 
             // txtVerNote
@@ -4740,15 +4704,12 @@ namespace NB_iot
             this.chkASCII.Text = "顯示ASCII";
             this.chkASCII.UseVisualStyleBackColor = true;
             // 
-            // label95
+            // toolTip1
             // 
-            this.label95.AutoSize = true;
-            this.label95.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label95.Location = new System.Drawing.Point(38, 440);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(211, 16);
-            this.label95.TabIndex = 1;
-            this.label95.Text = "NTU   ：透明度、懸浮物、濁度、溫度";
+            this.toolTip1.AutomaticDelay = 100;
+            this.toolTip1.AutoPopDelay = 2000;
+            this.toolTip1.InitialDelay = 100;
+            this.toolTip1.ReshowDelay = 20;
             // 
             // Form1
             // 
@@ -5160,9 +5121,6 @@ namespace NB_iot
         private System.Windows.Forms.Label label87;
         private System.Windows.Forms.Button btnCRC16;
         private System.Windows.Forms.TextBox boxCRC16;
-        private System.Windows.Forms.Label label90;
-        private System.Windows.Forms.Label label89;
-        private System.Windows.Forms.Label label88;
         private System.Windows.Forms.CheckBox chknormal;
         private System.Windows.Forms.TextBox txtMch12;
         private System.Windows.Forms.TextBox txtMch8;
@@ -5195,7 +5153,7 @@ namespace NB_iot
         private System.Windows.Forms.CheckBox chkEEP;
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.CheckBox chkASCII;
-        private System.Windows.Forms.Label label95;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

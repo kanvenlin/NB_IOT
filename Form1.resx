@@ -126,6 +126,9 @@
   <metadata name="SerialCOM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>195, 17</value>
   </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>652, 17</value>
+  </metadata>
   <metadata name="timer1s.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>287, 14</value>
   </metadata>
@@ -164,6 +167,8 @@ Type設定增加空白選項，選擇空白時 ID自動設定為0
 
 ********** 2021.10.05 Z7 ***********************
 1、增加NTU 設定功能
+********** 2021.10.08 Z7 ***********************
+1、增加Type設定，滑鼠移到資料蘭位，出現題示
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
