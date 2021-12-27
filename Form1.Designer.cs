@@ -61,6 +61,8 @@ namespace NB_iot
             this.btnCycleTime = new System.Windows.Forms.Button();
             this.chkCrycle = new System.Windows.Forms.CheckBox();
             this.chkRec = new System.Windows.Forms.CheckBox();
+            this.boxFunc = new System.Windows.Forms.ComboBox();
+            this.boxMachine = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtRtcTime = new System.Windows.Forms.TextBox();
             this.boxSec = new System.Windows.Forms.TextBox();
@@ -82,10 +84,12 @@ namespace NB_iot
             this.btnAF = new System.Windows.Forms.Button();
             this.btnIE = new System.Windows.Forms.Button();
             this.btnIntTime = new System.Windows.Forms.Button();
-            this.txtver = new System.Windows.Forms.TextBox();
-            this.label83 = new System.Windows.Forms.Label();
             this.btnVer = new System.Windows.Forms.Button();
             this.btnClearRec = new System.Windows.Forms.Button();
+            this.txtver = new System.Windows.Forms.TextBox();
+            this.label83 = new System.Windows.Forms.Label();
+            this.btnSetMo = new System.Windows.Forms.Button();
+            this.btnReadMo = new System.Windows.Forms.Button();
             this.tabNET = new System.Windows.Forms.TabPage();
             this.btnReadNet = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -399,6 +403,9 @@ namespace NB_iot
             this.chknormal = new System.Windows.Forms.CheckBox();
             this.chkASCII = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panelCH = new System.Windows.Forms.Panel();
+            this.panelAD = new System.Windows.Forms.Panel();
+            this.panelCHG = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.tabFunc.SuspendLayout();
             this.tabRTC.SuspendLayout();
@@ -417,6 +424,9 @@ namespace NB_iot
             this.TestBox.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.tabCRC.SuspendLayout();
+            this.panelCH.SuspendLayout();
+            this.panelAD.SuspendLayout();
+            this.panelCHG.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -535,11 +545,15 @@ namespace NB_iot
             // tabRTC
             // 
             this.tabRTC.Controls.Add(this.groupBox7);
+            this.tabRTC.Controls.Add(this.boxFunc);
+            this.tabRTC.Controls.Add(this.boxMachine);
             this.tabRTC.Controls.Add(this.groupBox6);
-            this.tabRTC.Controls.Add(this.txtver);
-            this.tabRTC.Controls.Add(this.label83);
             this.tabRTC.Controls.Add(this.btnVer);
             this.tabRTC.Controls.Add(this.btnClearRec);
+            this.tabRTC.Controls.Add(this.txtver);
+            this.tabRTC.Controls.Add(this.label83);
+            this.tabRTC.Controls.Add(this.btnSetMo);
+            this.tabRTC.Controls.Add(this.btnReadMo);
             this.tabRTC.Location = new System.Drawing.Point(4, 25);
             this.tabRTC.Name = "tabRTC";
             this.tabRTC.Padding = new System.Windows.Forms.Padding(3);
@@ -757,6 +771,34 @@ namespace NB_iot
             this.chkRec.Text = "啟動紀錄";
             this.chkRec.UseVisualStyleBackColor = true;
             // 
+            // boxFunc
+            // 
+            this.boxFunc.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.boxFunc.FormattingEnabled = true;
+            this.boxFunc.Items.AddRange(new object[] {
+            "數位",
+            "類比",
+            "雨量"});
+            this.boxFunc.Location = new System.Drawing.Point(100, 41);
+            this.boxFunc.Name = "boxFunc";
+            this.boxFunc.Size = new System.Drawing.Size(112, 24);
+            this.boxFunc.TabIndex = 7;
+            this.boxFunc.Text = "數位";
+            // 
+            // boxMachine
+            // 
+            this.boxMachine.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.boxMachine.FormattingEnabled = true;
+            this.boxMachine.Items.AddRange(new object[] {
+            "RT200Pro",
+            "RTMini",
+            "RTOne"});
+            this.boxMachine.Location = new System.Drawing.Point(100, 13);
+            this.boxMachine.Name = "boxMachine";
+            this.boxMachine.Size = new System.Drawing.Size(112, 24);
+            this.boxMachine.TabIndex = 7;
+            this.boxMachine.Text = "RT200Pro";
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.txtRtcTime);
@@ -779,9 +821,9 @@ namespace NB_iot
             this.groupBox6.Controls.Add(this.btnAF);
             this.groupBox6.Controls.Add(this.btnIE);
             this.groupBox6.Controls.Add(this.btnIntTime);
-            this.groupBox6.Location = new System.Drawing.Point(5, 49);
+            this.groupBox6.Location = new System.Drawing.Point(6, 81);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(390, 254);
+            this.groupBox6.Size = new System.Drawing.Size(390, 224);
             this.groupBox6.TabIndex = 17;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "rtc";
@@ -789,7 +831,7 @@ namespace NB_iot
             // txtRtcTime
             // 
             this.txtRtcTime.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtRtcTime.Location = new System.Drawing.Point(76, 53);
+            this.txtRtcTime.Location = new System.Drawing.Point(78, 20);
             this.txtRtcTime.Name = "txtRtcTime";
             this.txtRtcTime.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtRtcTime.Size = new System.Drawing.Size(196, 23);
@@ -798,7 +840,7 @@ namespace NB_iot
             // boxSec
             // 
             this.boxSec.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.boxSec.Location = new System.Drawing.Point(36, 169);
+            this.boxSec.Location = new System.Drawing.Point(31, 126);
             this.boxSec.Name = "boxSec";
             this.boxSec.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.boxSec.Size = new System.Drawing.Size(68, 23);
@@ -810,7 +852,7 @@ namespace NB_iot
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label13.Location = new System.Drawing.Point(15, 56);
+            this.label13.Location = new System.Drawing.Point(8, 23);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(55, 16);
             this.label13.TabIndex = 1;
@@ -820,7 +862,7 @@ namespace NB_iot
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label10.Location = new System.Drawing.Point(10, 172);
+            this.label10.Location = new System.Drawing.Point(5, 129);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(20, 16);
             this.label10.TabIndex = 1;
@@ -830,7 +872,7 @@ namespace NB_iot
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label9.Location = new System.Drawing.Point(10, 143);
+            this.label9.Location = new System.Drawing.Point(5, 100);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(20, 16);
             this.label9.TabIndex = 1;
@@ -840,7 +882,7 @@ namespace NB_iot
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label11.Location = new System.Drawing.Point(33, 91);
+            this.label11.Location = new System.Drawing.Point(28, 48);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(56, 16);
             this.label11.TabIndex = 1;
@@ -850,7 +892,7 @@ namespace NB_iot
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label8.Location = new System.Drawing.Point(10, 113);
+            this.label8.Location = new System.Drawing.Point(5, 70);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(20, 16);
             this.label8.TabIndex = 1;
@@ -860,7 +902,7 @@ namespace NB_iot
             // 
             this.chkMin.AutoSize = true;
             this.chkMin.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.chkMin.Location = new System.Drawing.Point(110, 142);
+            this.chkMin.Location = new System.Drawing.Point(105, 99);
             this.chkMin.Name = "chkMin";
             this.chkMin.Size = new System.Drawing.Size(51, 20);
             this.chkMin.TabIndex = 3;
@@ -872,7 +914,7 @@ namespace NB_iot
             // 
             this.chkSec.AutoSize = true;
             this.chkSec.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.chkSec.Location = new System.Drawing.Point(110, 172);
+            this.chkSec.Location = new System.Drawing.Point(105, 129);
             this.chkSec.Name = "chkSec";
             this.chkSec.Size = new System.Drawing.Size(51, 20);
             this.chkSec.TabIndex = 3;
@@ -884,7 +926,7 @@ namespace NB_iot
             // 
             this.chkHour.AutoSize = true;
             this.chkHour.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.chkHour.Location = new System.Drawing.Point(110, 110);
+            this.chkHour.Location = new System.Drawing.Point(105, 67);
             this.chkHour.Name = "chkHour";
             this.chkHour.Size = new System.Drawing.Size(51, 20);
             this.chkHour.TabIndex = 3;
@@ -895,7 +937,7 @@ namespace NB_iot
             // boxMin
             // 
             this.boxMin.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.boxMin.Location = new System.Drawing.Point(36, 140);
+            this.boxMin.Location = new System.Drawing.Point(31, 97);
             this.boxMin.Name = "boxMin";
             this.boxMin.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.boxMin.Size = new System.Drawing.Size(68, 23);
@@ -906,7 +948,7 @@ namespace NB_iot
             // boxHour
             // 
             this.boxHour.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.boxHour.Location = new System.Drawing.Point(36, 110);
+            this.boxHour.Location = new System.Drawing.Point(31, 67);
             this.boxHour.Name = "boxHour";
             this.boxHour.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.boxHour.Size = new System.Drawing.Size(68, 23);
@@ -920,7 +962,7 @@ namespace NB_iot
             this.chkAF.AutoSize = true;
             this.chkAF.Enabled = false;
             this.chkAF.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.chkAF.Location = new System.Drawing.Point(110, 208);
+            this.chkAF.Location = new System.Drawing.Point(105, 165);
             this.chkAF.Name = "chkAF";
             this.chkAF.Size = new System.Drawing.Size(41, 20);
             this.chkAF.TabIndex = 2;
@@ -931,7 +973,7 @@ namespace NB_iot
             // 
             this.chkIE.AutoSize = true;
             this.chkIE.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.chkIE.Location = new System.Drawing.Point(29, 208);
+            this.chkIE.Location = new System.Drawing.Point(24, 165);
             this.chkIE.Name = "chkIE";
             this.chkIE.Size = new System.Drawing.Size(37, 20);
             this.chkIE.TabIndex = 2;
@@ -941,9 +983,9 @@ namespace NB_iot
             // btnReadRTC
             // 
             this.btnReadRTC.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnReadRTC.Location = new System.Drawing.Point(287, 47);
+            this.btnReadRTC.Location = new System.Drawing.Point(286, 48);
             this.btnReadRTC.Name = "btnReadRTC";
-            this.btnReadRTC.Size = new System.Drawing.Size(93, 29);
+            this.btnReadRTC.Size = new System.Drawing.Size(89, 28);
             this.btnReadRTC.TabIndex = 4;
             this.btnReadRTC.Text = "讀取RTC時間";
             this.btnReadRTC.UseVisualStyleBackColor = true;
@@ -952,9 +994,9 @@ namespace NB_iot
             // btnSymTime
             // 
             this.btnSymTime.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnSymTime.Location = new System.Drawing.Point(16, 19);
+            this.btnSymTime.Location = new System.Drawing.Point(286, 11);
             this.btnSymTime.Name = "btnSymTime";
-            this.btnSymTime.Size = new System.Drawing.Size(364, 22);
+            this.btnSymTime.Size = new System.Drawing.Size(89, 31);
             this.btnSymTime.TabIndex = 4;
             this.btnSymTime.Text = "同步系統時間";
             this.btnSymTime.UseVisualStyleBackColor = true;
@@ -963,7 +1005,7 @@ namespace NB_iot
             // btnRead
             // 
             this.btnRead.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnRead.Location = new System.Drawing.Point(288, 172);
+            this.btnRead.Location = new System.Drawing.Point(287, 144);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(92, 61);
             this.btnRead.TabIndex = 4;
@@ -974,7 +1016,7 @@ namespace NB_iot
             // btnAF
             // 
             this.btnAF.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnAF.Location = new System.Drawing.Point(165, 205);
+            this.btnAF.Location = new System.Drawing.Point(162, 162);
             this.btnAF.Name = "btnAF";
             this.btnAF.Size = new System.Drawing.Size(67, 25);
             this.btnAF.TabIndex = 4;
@@ -985,7 +1027,7 @@ namespace NB_iot
             // btnIE
             // 
             this.btnIE.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnIE.Location = new System.Drawing.Point(24, 229);
+            this.btnIE.Location = new System.Drawing.Point(14, 191);
             this.btnIE.Name = "btnIE";
             this.btnIE.Size = new System.Drawing.Size(67, 25);
             this.btnIE.TabIndex = 4;
@@ -997,7 +1039,7 @@ namespace NB_iot
             // btnIntTime
             // 
             this.btnIntTime.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnIntTime.Location = new System.Drawing.Point(165, 102);
+            this.btnIntTime.Location = new System.Drawing.Point(162, 67);
             this.btnIntTime.Name = "btnIntTime";
             this.btnIntTime.Size = new System.Drawing.Size(67, 86);
             this.btnIntTime.TabIndex = 4;
@@ -1005,10 +1047,32 @@ namespace NB_iot
             this.btnIntTime.UseVisualStyleBackColor = true;
             this.btnIntTime.Click += new System.EventHandler(this.btnIntTime_Click);
             // 
+            // btnVer
+            // 
+            this.btnVer.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnVer.Location = new System.Drawing.Point(12, 55);
+            this.btnVer.Name = "btnVer";
+            this.btnVer.Size = new System.Drawing.Size(78, 29);
+            this.btnVer.TabIndex = 4;
+            this.btnVer.Text = "讀取版本";
+            this.btnVer.UseVisualStyleBackColor = true;
+            this.btnVer.Click += new System.EventHandler(this.btnVer_Click);
+            // 
+            // btnClearRec
+            // 
+            this.btnClearRec.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnClearRec.Location = new System.Drawing.Point(319, 13);
+            this.btnClearRec.Name = "btnClearRec";
+            this.btnClearRec.Size = new System.Drawing.Size(75, 52);
+            this.btnClearRec.TabIndex = 4;
+            this.btnClearRec.Text = "清除紀錄筆數";
+            this.btnClearRec.UseVisualStyleBackColor = true;
+            this.btnClearRec.Click += new System.EventHandler(this.btnReadID_Click);
+            // 
             // txtver
             // 
             this.txtver.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtver.Location = new System.Drawing.Point(21, 22);
+            this.txtver.Location = new System.Drawing.Point(12, 26);
             this.txtver.Name = "txtver";
             this.txtver.ReadOnly = true;
             this.txtver.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -1021,33 +1085,33 @@ namespace NB_iot
             // 
             this.label83.AutoSize = true;
             this.label83.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label83.Location = new System.Drawing.Point(20, 3);
+            this.label83.Location = new System.Drawing.Point(12, 7);
             this.label83.Name = "label83";
             this.label83.Size = new System.Drawing.Size(56, 16);
             this.label83.TabIndex = 1;
             this.label83.Text = "韌體版本";
             // 
-            // btnVer
+            // btnSetMo
             // 
-            this.btnVer.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnVer.Location = new System.Drawing.Point(96, 13);
-            this.btnVer.Name = "btnVer";
-            this.btnVer.Size = new System.Drawing.Size(76, 36);
-            this.btnVer.TabIndex = 4;
-            this.btnVer.Text = "讀取版本";
-            this.btnVer.UseVisualStyleBackColor = true;
-            this.btnVer.Click += new System.EventHandler(this.btnVer_Click);
+            this.btnSetMo.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnSetMo.Location = new System.Drawing.Point(218, 7);
+            this.btnSetMo.Name = "btnSetMo";
+            this.btnSetMo.Size = new System.Drawing.Size(71, 30);
+            this.btnSetMo.TabIndex = 4;
+            this.btnSetMo.Text = "設定機種";
+            this.btnSetMo.UseVisualStyleBackColor = true;
+            this.btnSetMo.Click += new System.EventHandler(this.btnSetMo_Click);
             // 
-            // btnClearRec
+            // btnReadMo
             // 
-            this.btnClearRec.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnClearRec.Location = new System.Drawing.Point(267, 13);
-            this.btnClearRec.Name = "btnClearRec";
-            this.btnClearRec.Size = new System.Drawing.Size(128, 36);
-            this.btnClearRec.TabIndex = 4;
-            this.btnClearRec.Text = "清除紀錄/傳送筆數";
-            this.btnClearRec.UseVisualStyleBackColor = true;
-            this.btnClearRec.Click += new System.EventHandler(this.btnReadID_Click);
+            this.btnReadMo.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnReadMo.Location = new System.Drawing.Point(218, 41);
+            this.btnReadMo.Name = "btnReadMo";
+            this.btnReadMo.Size = new System.Drawing.Size(71, 33);
+            this.btnReadMo.TabIndex = 4;
+            this.btnReadMo.Text = "讀取模式";
+            this.btnReadMo.UseVisualStyleBackColor = true;
+            this.btnReadMo.Click += new System.EventHandler(this.btnReadMo_Click);
             // 
             // tabNET
             // 
@@ -1077,9 +1141,9 @@ namespace NB_iot
             // btnReadNet
             // 
             this.btnReadNet.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnReadNet.Location = new System.Drawing.Point(252, 417);
+            this.btnReadNet.Location = new System.Drawing.Point(275, 417);
             this.btnReadNet.Name = "btnReadNet";
-            this.btnReadNet.Size = new System.Drawing.Size(118, 47);
+            this.btnReadNet.Size = new System.Drawing.Size(95, 47);
             this.btnReadNet.TabIndex = 16;
             this.btnReadNet.Text = "讀取此頁設定";
             this.btnReadNet.UseVisualStyleBackColor = true;
@@ -1458,7 +1522,7 @@ namespace NB_iot
             this.txtIMEI.Name = "txtIMEI";
             this.txtIMEI.ReadOnly = true;
             this.txtIMEI.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtIMEI.Size = new System.Drawing.Size(174, 23);
+            this.txtIMEI.Size = new System.Drawing.Size(69, 23);
             this.txtIMEI.TabIndex = 10;
             this.txtIMEI.Text = "12345678";
             // 
@@ -1517,7 +1581,7 @@ namespace NB_iot
             this.btnSingle.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnSingle.Location = new System.Drawing.Point(159, 353);
             this.btnSingle.Name = "btnSingle";
-            this.btnSingle.Size = new System.Drawing.Size(60, 111);
+            this.btnSingle.Size = new System.Drawing.Size(81, 111);
             this.btnSingle.TabIndex = 4;
             this.btnSingle.Text = "讀取訊號強度";
             this.btnSingle.UseVisualStyleBackColor = true;
@@ -1526,9 +1590,9 @@ namespace NB_iot
             // btnIMEI
             // 
             this.btnIMEI.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnIMEI.Location = new System.Drawing.Point(258, 321);
+            this.btnIMEI.Location = new System.Drawing.Point(159, 321);
             this.btnIMEI.Name = "btnIMEI";
-            this.btnIMEI.Size = new System.Drawing.Size(99, 29);
+            this.btnIMEI.Size = new System.Drawing.Size(81, 29);
             this.btnIMEI.TabIndex = 4;
             this.btnIMEI.Text = "讀取IMEI";
             this.btnIMEI.UseVisualStyleBackColor = true;
@@ -1549,42 +1613,31 @@ namespace NB_iot
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panelAD);
             this.panel1.Controls.Add(this.txtCH2);
             this.panel1.Controls.Add(this.txtCH6);
-            this.panel1.Controls.Add(this.txtCH10);
             this.panel1.Controls.Add(this.txtCH4);
-            this.panel1.Controls.Add(this.txtCH8);
-            this.panel1.Controls.Add(this.txtCH12);
             this.panel1.Controls.Add(this.radCalc);
             this.panel1.Controls.Add(this.radRaw);
             this.panel1.Controls.Add(this.label32);
             this.panel1.Controls.Add(this.label33);
-            this.panel1.Controls.Add(this.label43);
             this.panel1.Controls.Add(this.label39);
-            this.panel1.Controls.Add(this.label31);
-            this.panel1.Controls.Add(this.label42);
             this.panel1.Controls.Add(this.label38);
-            this.panel1.Controls.Add(this.label35);
             this.panel1.Controls.Add(this.label41);
             this.panel1.Controls.Add(this.label37);
-            this.panel1.Controls.Add(this.label30);
             this.panel1.Controls.Add(this.label40);
             this.panel1.Controls.Add(this.label36);
-            this.panel1.Controls.Add(this.label29);
             this.panel1.Controls.Add(this.txtCH5);
             this.panel1.Controls.Add(this.txtCH1);
-            this.panel1.Controls.Add(this.txtCH9);
             this.panel1.Controls.Add(this.btnContinue);
             this.panel1.Controls.Add(this.btnClrAIV);
             this.panel1.Controls.Add(this.btnReadAI);
             this.panel1.Controls.Add(this.txtDoor);
             this.panel1.Controls.Add(this.txtCH3);
-            this.panel1.Controls.Add(this.txtCH7);
             this.panel1.Controls.Add(this.txtRain);
-            this.panel1.Controls.Add(this.txtCH11);
             this.panel1.Location = new System.Drawing.Point(9, 193);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(367, 296);
+            this.panel1.Size = new System.Drawing.Size(367, 305);
             this.panel1.TabIndex = 13;
             // 
             // txtCH2
@@ -1612,7 +1665,7 @@ namespace NB_iot
             // txtCH10
             // 
             this.txtCH10.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCH10.Location = new System.Drawing.Point(140, 225);
+            this.txtCH10.Location = new System.Drawing.Point(135, 64);
             this.txtCH10.Name = "txtCH10";
             this.txtCH10.ReadOnly = true;
             this.txtCH10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -1634,7 +1687,7 @@ namespace NB_iot
             // txtCH8
             // 
             this.txtCH8.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCH8.Location = new System.Drawing.Point(140, 181);
+            this.txtCH8.Location = new System.Drawing.Point(135, 20);
             this.txtCH8.Name = "txtCH8";
             this.txtCH8.ReadOnly = true;
             this.txtCH8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -1645,7 +1698,7 @@ namespace NB_iot
             // txtCH12
             // 
             this.txtCH12.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCH12.Location = new System.Drawing.Point(140, 270);
+            this.txtCH12.Location = new System.Drawing.Point(135, 109);
             this.txtCH12.Name = "txtCH12";
             this.txtCH12.ReadOnly = true;
             this.txtCH12.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -1701,7 +1754,7 @@ namespace NB_iot
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label43.Location = new System.Drawing.Point(10, 162);
+            this.label43.Location = new System.Drawing.Point(5, 1);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(60, 16);
             this.label43.TabIndex = 1;
@@ -1721,7 +1774,7 @@ namespace NB_iot
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label31.Location = new System.Drawing.Point(10, 251);
+            this.label31.Location = new System.Drawing.Point(5, 90);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(67, 16);
             this.label31.TabIndex = 1;
@@ -1731,7 +1784,7 @@ namespace NB_iot
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label42.Location = new System.Drawing.Point(142, 162);
+            this.label42.Location = new System.Drawing.Point(137, 1);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(60, 16);
             this.label42.TabIndex = 1;
@@ -1751,7 +1804,7 @@ namespace NB_iot
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label35.Location = new System.Drawing.Point(142, 251);
+            this.label35.Location = new System.Drawing.Point(137, 90);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(67, 16);
             this.label35.TabIndex = 1;
@@ -1781,7 +1834,7 @@ namespace NB_iot
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label30.Location = new System.Drawing.Point(142, 207);
+            this.label30.Location = new System.Drawing.Point(137, 46);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(67, 16);
             this.label30.TabIndex = 1;
@@ -1811,7 +1864,7 @@ namespace NB_iot
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label29.Location = new System.Drawing.Point(10, 206);
+            this.label29.Location = new System.Drawing.Point(5, 45);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(60, 16);
             this.label29.TabIndex = 1;
@@ -1842,7 +1895,7 @@ namespace NB_iot
             // txtCH9
             // 
             this.txtCH9.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCH9.Location = new System.Drawing.Point(6, 225);
+            this.txtCH9.Location = new System.Drawing.Point(1, 64);
             this.txtCH9.Name = "txtCH9";
             this.txtCH9.ReadOnly = true;
             this.txtCH9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -1908,7 +1961,7 @@ namespace NB_iot
             // txtCH7
             // 
             this.txtCH7.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCH7.Location = new System.Drawing.Point(6, 181);
+            this.txtCH7.Location = new System.Drawing.Point(1, 20);
             this.txtCH7.Name = "txtCH7";
             this.txtCH7.ReadOnly = true;
             this.txtCH7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -1930,7 +1983,7 @@ namespace NB_iot
             // txtCH11
             // 
             this.txtCH11.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCH11.Location = new System.Drawing.Point(6, 270);
+            this.txtCH11.Location = new System.Drawing.Point(1, 109);
             this.txtCH11.Name = "txtCH11";
             this.txtCH11.ReadOnly = true;
             this.txtCH11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2101,38 +2154,23 @@ namespace NB_iot
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.boxType8);
-            this.tabPage1.Controls.Add(this.boxType7);
-            this.tabPage1.Controls.Add(this.boxType6);
-            this.tabPage1.Controls.Add(this.boxType5);
+            this.tabPage1.Controls.Add(this.panelCH);
             this.tabPage1.Controls.Add(this.boxType4);
             this.tabPage1.Controls.Add(this.boxType3);
             this.tabPage1.Controls.Add(this.boxType2);
             this.tabPage1.Controls.Add(this.cbobaud);
             this.tabPage1.Controls.Add(this.boxType1);
-            this.tabPage1.Controls.Add(this.boxData8);
-            this.tabPage1.Controls.Add(this.boxID8);
-            this.tabPage1.Controls.Add(this.boxData7);
-            this.tabPage1.Controls.Add(this.boxData6);
             this.tabPage1.Controls.Add(this.btnReadType);
             this.tabPage1.Controls.Add(this.btnSetType);
-            this.tabPage1.Controls.Add(this.boxID7);
-            this.tabPage1.Controls.Add(this.boxData5);
-            this.tabPage1.Controls.Add(this.boxID6);
             this.tabPage1.Controls.Add(this.boxData4);
-            this.tabPage1.Controls.Add(this.boxID5);
             this.tabPage1.Controls.Add(this.boxData3);
             this.tabPage1.Controls.Add(this.boxID4);
             this.tabPage1.Controls.Add(this.boxData2);
             this.tabPage1.Controls.Add(this.boxID3);
             this.tabPage1.Controls.Add(this.boxID2);
             this.tabPage1.Controls.Add(this.label59);
-            this.tabPage1.Controls.Add(this.label57);
-            this.tabPage1.Controls.Add(this.label56);
             this.tabPage1.Controls.Add(this.label53);
-            this.tabPage1.Controls.Add(this.label55);
             this.tabPage1.Controls.Add(this.label52);
-            this.tabPage1.Controls.Add(this.label54);
             this.tabPage1.Controls.Add(this.label51);
             this.tabPage1.Controls.Add(this.label50);
             this.tabPage1.Controls.Add(this.label58);
@@ -2151,7 +2189,7 @@ namespace NB_iot
             // boxType8
             // 
             this.boxType8.FormattingEnabled = true;
-            this.boxType8.Location = new System.Drawing.Point(55, 257);
+            this.boxType8.Location = new System.Drawing.Point(43, 94);
             this.boxType8.Name = "boxType8";
             this.boxType8.Size = new System.Drawing.Size(88, 24);
             this.boxType8.TabIndex = 0;
@@ -2160,7 +2198,7 @@ namespace NB_iot
             // boxType7
             // 
             this.boxType7.FormattingEnabled = true;
-            this.boxType7.Location = new System.Drawing.Point(55, 227);
+            this.boxType7.Location = new System.Drawing.Point(43, 64);
             this.boxType7.Name = "boxType7";
             this.boxType7.Size = new System.Drawing.Size(88, 24);
             this.boxType7.TabIndex = 0;
@@ -2169,7 +2207,7 @@ namespace NB_iot
             // boxType6
             // 
             this.boxType6.FormattingEnabled = true;
-            this.boxType6.Location = new System.Drawing.Point(55, 197);
+            this.boxType6.Location = new System.Drawing.Point(43, 34);
             this.boxType6.Name = "boxType6";
             this.boxType6.Size = new System.Drawing.Size(88, 24);
             this.boxType6.TabIndex = 0;
@@ -2178,7 +2216,7 @@ namespace NB_iot
             // boxType5
             // 
             this.boxType5.FormattingEnabled = true;
-            this.boxType5.Location = new System.Drawing.Point(55, 166);
+            this.boxType5.Location = new System.Drawing.Point(43, 3);
             this.boxType5.Name = "boxType5";
             this.boxType5.Size = new System.Drawing.Size(88, 24);
             this.boxType5.TabIndex = 0;
@@ -2220,7 +2258,7 @@ namespace NB_iot
             "19200",
             "38400",
             "57600"});
-            this.cbobaud.Location = new System.Drawing.Point(81, 296);
+            this.cbobaud.Location = new System.Drawing.Point(81, 310);
             this.cbobaud.Name = "cbobaud";
             this.cbobaud.Size = new System.Drawing.Size(88, 24);
             this.cbobaud.TabIndex = 0;
@@ -2246,7 +2284,7 @@ namespace NB_iot
             // boxData8
             // 
             this.boxData8.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.boxData8.Location = new System.Drawing.Point(254, 256);
+            this.boxData8.Location = new System.Drawing.Point(242, 93);
             this.boxData8.Name = "boxData8";
             this.boxData8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.boxData8.Size = new System.Drawing.Size(67, 23);
@@ -2257,7 +2295,7 @@ namespace NB_iot
             // boxID8
             // 
             this.boxID8.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.boxID8.Location = new System.Drawing.Point(164, 258);
+            this.boxID8.Location = new System.Drawing.Point(152, 95);
             this.boxID8.MaxLength = 3;
             this.boxID8.Name = "boxID8";
             this.boxID8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2269,7 +2307,7 @@ namespace NB_iot
             // boxData7
             // 
             this.boxData7.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.boxData7.Location = new System.Drawing.Point(254, 227);
+            this.boxData7.Location = new System.Drawing.Point(242, 64);
             this.boxData7.Name = "boxData7";
             this.boxData7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.boxData7.Size = new System.Drawing.Size(67, 23);
@@ -2280,7 +2318,7 @@ namespace NB_iot
             // boxData6
             // 
             this.boxData6.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.boxData6.Location = new System.Drawing.Point(254, 195);
+            this.boxData6.Location = new System.Drawing.Point(242, 32);
             this.boxData6.Name = "boxData6";
             this.boxData6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.boxData6.Size = new System.Drawing.Size(67, 23);
@@ -2291,7 +2329,7 @@ namespace NB_iot
             // btnReadType
             // 
             this.btnReadType.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnReadType.Location = new System.Drawing.Point(231, 341);
+            this.btnReadType.Location = new System.Drawing.Point(231, 355);
             this.btnReadType.Name = "btnReadType";
             this.btnReadType.Size = new System.Drawing.Size(90, 36);
             this.btnReadType.TabIndex = 0;
@@ -2302,7 +2340,7 @@ namespace NB_iot
             // btnSetType
             // 
             this.btnSetType.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnSetType.Location = new System.Drawing.Point(231, 299);
+            this.btnSetType.Location = new System.Drawing.Point(33, 355);
             this.btnSetType.Name = "btnSetType";
             this.btnSetType.Size = new System.Drawing.Size(90, 36);
             this.btnSetType.TabIndex = 0;
@@ -2313,7 +2351,7 @@ namespace NB_iot
             // boxID7
             // 
             this.boxID7.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.boxID7.Location = new System.Drawing.Point(164, 227);
+            this.boxID7.Location = new System.Drawing.Point(152, 64);
             this.boxID7.MaxLength = 3;
             this.boxID7.Name = "boxID7";
             this.boxID7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2325,7 +2363,7 @@ namespace NB_iot
             // boxData5
             // 
             this.boxData5.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.boxData5.Location = new System.Drawing.Point(254, 166);
+            this.boxData5.Location = new System.Drawing.Point(242, 3);
             this.boxData5.Name = "boxData5";
             this.boxData5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.boxData5.Size = new System.Drawing.Size(67, 23);
@@ -2336,7 +2374,7 @@ namespace NB_iot
             // boxID6
             // 
             this.boxID6.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.boxID6.Location = new System.Drawing.Point(164, 197);
+            this.boxID6.Location = new System.Drawing.Point(152, 34);
             this.boxID6.MaxLength = 3;
             this.boxID6.Name = "boxID6";
             this.boxID6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2359,7 +2397,7 @@ namespace NB_iot
             // boxID5
             // 
             this.boxID5.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.boxID5.Location = new System.Drawing.Point(164, 168);
+            this.boxID5.Location = new System.Drawing.Point(152, 5);
             this.boxID5.MaxLength = 3;
             this.boxID5.Name = "boxID5";
             this.boxID5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2430,7 +2468,7 @@ namespace NB_iot
             // 
             this.label59.AutoSize = true;
             this.label59.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label59.Location = new System.Drawing.Point(17, 299);
+            this.label59.Location = new System.Drawing.Point(17, 313);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(58, 16);
             this.label59.TabIndex = 1;
@@ -2440,7 +2478,7 @@ namespace NB_iot
             // 
             this.label57.AutoSize = true;
             this.label57.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label57.Location = new System.Drawing.Point(17, 260);
+            this.label57.Location = new System.Drawing.Point(5, 97);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(32, 16);
             this.label57.TabIndex = 1;
@@ -2450,7 +2488,7 @@ namespace NB_iot
             // 
             this.label56.AutoSize = true;
             this.label56.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label56.Location = new System.Drawing.Point(17, 230);
+            this.label56.Location = new System.Drawing.Point(5, 67);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(32, 16);
             this.label56.TabIndex = 1;
@@ -2470,7 +2508,7 @@ namespace NB_iot
             // 
             this.label55.AutoSize = true;
             this.label55.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label55.Location = new System.Drawing.Point(17, 200);
+            this.label55.Location = new System.Drawing.Point(5, 37);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(32, 16);
             this.label55.TabIndex = 1;
@@ -2490,7 +2528,7 @@ namespace NB_iot
             // 
             this.label54.AutoSize = true;
             this.label54.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label54.Location = new System.Drawing.Point(17, 171);
+            this.label54.Location = new System.Drawing.Point(5, 8);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(32, 16);
             this.label54.TabIndex = 1;
@@ -2572,89 +2610,48 @@ namespace NB_iot
             // 
             // tabCHG
             // 
+            this.tabCHG.Controls.Add(this.panelCHG);
             this.tabCHG.Controls.Add(this.boxRain);
-            this.tabCHG.Controls.Add(this.txtCch12);
-            this.tabCHG.Controls.Add(this.txtCch8);
             this.tabCHG.Controls.Add(this.txtCch4);
-            this.tabCHG.Controls.Add(this.txtCch11);
-            this.tabCHG.Controls.Add(this.txtCch7);
             this.tabCHG.Controls.Add(this.txtCch3);
-            this.tabCHG.Controls.Add(this.txtCch10);
             this.tabCHG.Controls.Add(this.txtCch6);
             this.tabCHG.Controls.Add(this.txtCch2);
-            this.tabCHG.Controls.Add(this.txtCch9);
             this.tabCHG.Controls.Add(this.txtCch5);
             this.tabCHG.Controls.Add(this.txtCch1);
             this.tabCHG.Controls.Add(this.btnSCHG);
             this.tabCHG.Controls.Add(this.btnRCHG);
-            this.tabCHG.Controls.Add(this.txtMch12);
-            this.tabCHG.Controls.Add(this.txtXch12);
-            this.tabCHG.Controls.Add(this.txtDch12);
-            this.tabCHG.Controls.Add(this.txtMch8);
-            this.tabCHG.Controls.Add(this.txtXch8);
-            this.tabCHG.Controls.Add(this.txtDch8);
-            this.tabCHG.Controls.Add(this.txtMch11);
-            this.tabCHG.Controls.Add(this.txtXch11);
             this.tabCHG.Controls.Add(this.txtMch4);
             this.tabCHG.Controls.Add(this.txtXch4);
-            this.tabCHG.Controls.Add(this.txtMch7);
-            this.tabCHG.Controls.Add(this.txtXch7);
-            this.tabCHG.Controls.Add(this.txtDch11);
             this.tabCHG.Controls.Add(this.txtDch4);
-            this.tabCHG.Controls.Add(this.txtDch7);
-            this.tabCHG.Controls.Add(this.txtMch10);
-            this.tabCHG.Controls.Add(this.txtXch10);
             this.tabCHG.Controls.Add(this.txtMch3);
             this.tabCHG.Controls.Add(this.txtXch3);
             this.tabCHG.Controls.Add(this.txtMch6);
             this.tabCHG.Controls.Add(this.txtXch6);
-            this.tabCHG.Controls.Add(this.txtRch12);
             this.tabCHG.Controls.Add(this.txtDch3);
-            this.tabCHG.Controls.Add(this.txtRch8);
-            this.tabCHG.Controls.Add(this.txtDch10);
             this.tabCHG.Controls.Add(this.txtMch2);
             this.tabCHG.Controls.Add(this.txtXch2);
             this.tabCHG.Controls.Add(this.txtDch6);
-            this.tabCHG.Controls.Add(this.txtRch11);
             this.tabCHG.Controls.Add(this.txtRch4);
-            this.tabCHG.Controls.Add(this.txtRch7);
-            this.tabCHG.Controls.Add(this.txtMch9);
-            this.tabCHG.Controls.Add(this.txtXch9);
             this.tabCHG.Controls.Add(this.txtDch2);
             this.tabCHG.Controls.Add(this.txtMch5);
             this.tabCHG.Controls.Add(this.txtXch5);
-            this.tabCHG.Controls.Add(this.txtLch12);
             this.tabCHG.Controls.Add(this.txtRch3);
-            this.tabCHG.Controls.Add(this.txtLch8);
-            this.tabCHG.Controls.Add(this.txtRch10);
             this.tabCHG.Controls.Add(this.txtMch1);
             this.tabCHG.Controls.Add(this.txtXch1);
             this.tabCHG.Controls.Add(this.txtRch6);
-            this.tabCHG.Controls.Add(this.txtLch11);
             this.tabCHG.Controls.Add(this.txtLch4);
-            this.tabCHG.Controls.Add(this.txtLch7);
-            this.tabCHG.Controls.Add(this.txtDch9);
             this.tabCHG.Controls.Add(this.txtRch2);
             this.tabCHG.Controls.Add(this.txtDch5);
-            this.tabCHG.Controls.Add(this.txtBPch12);
             this.tabCHG.Controls.Add(this.txtLch3);
-            this.tabCHG.Controls.Add(this.txtBPch8);
-            this.tabCHG.Controls.Add(this.txtLch10);
             this.tabCHG.Controls.Add(this.txtDch1);
             this.tabCHG.Controls.Add(this.txtLch6);
-            this.tabCHG.Controls.Add(this.txtBPch11);
             this.tabCHG.Controls.Add(this.txtBPch4);
-            this.tabCHG.Controls.Add(this.txtBPch7);
-            this.tabCHG.Controls.Add(this.txtRch9);
             this.tabCHG.Controls.Add(this.txtLch2);
             this.tabCHG.Controls.Add(this.txtRch5);
-            this.tabCHG.Controls.Add(this.txtBPch10);
             this.tabCHG.Controls.Add(this.txtBPch3);
             this.tabCHG.Controls.Add(this.txtBPch6);
-            this.tabCHG.Controls.Add(this.txtLch9);
             this.tabCHG.Controls.Add(this.txtRch1);
             this.tabCHG.Controls.Add(this.txtLch5);
-            this.tabCHG.Controls.Add(this.txtBPch9);
             this.tabCHG.Controls.Add(this.txtBPch2);
             this.tabCHG.Controls.Add(this.txtBPch5);
             this.tabCHG.Controls.Add(this.txtLch1);
@@ -2662,20 +2659,14 @@ namespace NB_iot
             this.tabCHG.Controls.Add(this.label92);
             this.tabCHG.Controls.Add(this.label91);
             this.tabCHG.Controls.Add(this.label77);
-            this.tabCHG.Controls.Add(this.label76);
             this.tabCHG.Controls.Add(this.label44);
             this.tabCHG.Controls.Add(this.label65);
-            this.tabCHG.Controls.Add(this.label72);
             this.tabCHG.Controls.Add(this.label);
-            this.tabCHG.Controls.Add(this.label75);
             this.tabCHG.Controls.Add(this.label68);
-            this.tabCHG.Controls.Add(this.label71);
             this.tabCHG.Controls.Add(this.label63);
-            this.tabCHG.Controls.Add(this.label74);
             this.tabCHG.Controls.Add(this.label67);
             this.tabCHG.Controls.Add(this.label70);
             this.tabCHG.Controls.Add(this.label62);
-            this.tabCHG.Controls.Add(this.label73);
             this.tabCHG.Controls.Add(this.label64);
             this.tabCHG.Controls.Add(this.label69);
             this.tabCHG.Controls.Add(this.label61);
@@ -2710,7 +2701,7 @@ namespace NB_iot
             // txtCch12
             // 
             this.txtCch12.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCch12.Location = new System.Drawing.Point(214, 347);
+            this.txtCch12.Location = new System.Drawing.Point(214, 153);
             this.txtCch12.MaxLength = 6;
             this.txtCch12.Name = "txtCch12";
             this.txtCch12.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2722,7 +2713,7 @@ namespace NB_iot
             // txtCch8
             // 
             this.txtCch8.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCch8.Location = new System.Drawing.Point(214, 230);
+            this.txtCch8.Location = new System.Drawing.Point(214, 36);
             this.txtCch8.MaxLength = 6;
             this.txtCch8.Name = "txtCch8";
             this.txtCch8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2746,7 +2737,7 @@ namespace NB_iot
             // txtCch11
             // 
             this.txtCch11.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCch11.Location = new System.Drawing.Point(214, 318);
+            this.txtCch11.Location = new System.Drawing.Point(214, 124);
             this.txtCch11.MaxLength = 6;
             this.txtCch11.Name = "txtCch11";
             this.txtCch11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2758,7 +2749,7 @@ namespace NB_iot
             // txtCch7
             // 
             this.txtCch7.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCch7.Location = new System.Drawing.Point(214, 201);
+            this.txtCch7.Location = new System.Drawing.Point(214, 7);
             this.txtCch7.MaxLength = 6;
             this.txtCch7.Name = "txtCch7";
             this.txtCch7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2782,7 +2773,7 @@ namespace NB_iot
             // txtCch10
             // 
             this.txtCch10.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCch10.Location = new System.Drawing.Point(215, 289);
+            this.txtCch10.Location = new System.Drawing.Point(215, 95);
             this.txtCch10.MaxLength = 6;
             this.txtCch10.Name = "txtCch10";
             this.txtCch10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2818,7 +2809,7 @@ namespace NB_iot
             // txtCch9
             // 
             this.txtCch9.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCch9.Location = new System.Drawing.Point(215, 260);
+            this.txtCch9.Location = new System.Drawing.Point(215, 66);
             this.txtCch9.MaxLength = 6;
             this.txtCch9.Name = "txtCch9";
             this.txtCch9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2876,7 +2867,7 @@ namespace NB_iot
             // txtMch12
             // 
             this.txtMch12.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtMch12.Location = new System.Drawing.Point(383, 347);
+            this.txtMch12.Location = new System.Drawing.Point(383, 153);
             this.txtMch12.MaxLength = 3;
             this.txtMch12.Name = "txtMch12";
             this.txtMch12.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2888,7 +2879,7 @@ namespace NB_iot
             // txtXch12
             // 
             this.txtXch12.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtXch12.Location = new System.Drawing.Point(330, 347);
+            this.txtXch12.Location = new System.Drawing.Point(330, 153);
             this.txtXch12.MaxLength = 6;
             this.txtXch12.Name = "txtXch12";
             this.txtXch12.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2900,7 +2891,7 @@ namespace NB_iot
             // txtDch12
             // 
             this.txtDch12.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtDch12.Location = new System.Drawing.Point(272, 347);
+            this.txtDch12.Location = new System.Drawing.Point(272, 153);
             this.txtDch12.MaxLength = 6;
             this.txtDch12.Name = "txtDch12";
             this.txtDch12.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2912,7 +2903,7 @@ namespace NB_iot
             // txtMch8
             // 
             this.txtMch8.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtMch8.Location = new System.Drawing.Point(383, 230);
+            this.txtMch8.Location = new System.Drawing.Point(383, 36);
             this.txtMch8.MaxLength = 3;
             this.txtMch8.Name = "txtMch8";
             this.txtMch8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2924,7 +2915,7 @@ namespace NB_iot
             // txtXch8
             // 
             this.txtXch8.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtXch8.Location = new System.Drawing.Point(330, 230);
+            this.txtXch8.Location = new System.Drawing.Point(330, 36);
             this.txtXch8.MaxLength = 6;
             this.txtXch8.Name = "txtXch8";
             this.txtXch8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2936,7 +2927,7 @@ namespace NB_iot
             // txtDch8
             // 
             this.txtDch8.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtDch8.Location = new System.Drawing.Point(272, 230);
+            this.txtDch8.Location = new System.Drawing.Point(272, 36);
             this.txtDch8.MaxLength = 6;
             this.txtDch8.Name = "txtDch8";
             this.txtDch8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2948,7 +2939,7 @@ namespace NB_iot
             // txtMch11
             // 
             this.txtMch11.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtMch11.Location = new System.Drawing.Point(383, 318);
+            this.txtMch11.Location = new System.Drawing.Point(383, 124);
             this.txtMch11.MaxLength = 3;
             this.txtMch11.Name = "txtMch11";
             this.txtMch11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2960,7 +2951,7 @@ namespace NB_iot
             // txtXch11
             // 
             this.txtXch11.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtXch11.Location = new System.Drawing.Point(330, 318);
+            this.txtXch11.Location = new System.Drawing.Point(330, 124);
             this.txtXch11.MaxLength = 6;
             this.txtXch11.Name = "txtXch11";
             this.txtXch11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -2996,7 +2987,7 @@ namespace NB_iot
             // txtMch7
             // 
             this.txtMch7.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtMch7.Location = new System.Drawing.Point(383, 201);
+            this.txtMch7.Location = new System.Drawing.Point(383, 7);
             this.txtMch7.MaxLength = 3;
             this.txtMch7.Name = "txtMch7";
             this.txtMch7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3008,7 +2999,7 @@ namespace NB_iot
             // txtXch7
             // 
             this.txtXch7.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtXch7.Location = new System.Drawing.Point(330, 201);
+            this.txtXch7.Location = new System.Drawing.Point(330, 7);
             this.txtXch7.MaxLength = 6;
             this.txtXch7.Name = "txtXch7";
             this.txtXch7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3020,7 +3011,7 @@ namespace NB_iot
             // txtDch11
             // 
             this.txtDch11.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtDch11.Location = new System.Drawing.Point(272, 318);
+            this.txtDch11.Location = new System.Drawing.Point(272, 124);
             this.txtDch11.MaxLength = 6;
             this.txtDch11.Name = "txtDch11";
             this.txtDch11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3044,7 +3035,7 @@ namespace NB_iot
             // txtDch7
             // 
             this.txtDch7.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtDch7.Location = new System.Drawing.Point(272, 201);
+            this.txtDch7.Location = new System.Drawing.Point(272, 7);
             this.txtDch7.MaxLength = 6;
             this.txtDch7.Name = "txtDch7";
             this.txtDch7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3056,7 +3047,7 @@ namespace NB_iot
             // txtMch10
             // 
             this.txtMch10.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtMch10.Location = new System.Drawing.Point(384, 289);
+            this.txtMch10.Location = new System.Drawing.Point(384, 95);
             this.txtMch10.MaxLength = 3;
             this.txtMch10.Name = "txtMch10";
             this.txtMch10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3068,7 +3059,7 @@ namespace NB_iot
             // txtXch10
             // 
             this.txtXch10.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtXch10.Location = new System.Drawing.Point(331, 289);
+            this.txtXch10.Location = new System.Drawing.Point(331, 95);
             this.txtXch10.MaxLength = 6;
             this.txtXch10.Name = "txtXch10";
             this.txtXch10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3128,7 +3119,7 @@ namespace NB_iot
             // txtRch12
             // 
             this.txtRch12.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtRch12.Location = new System.Drawing.Point(156, 347);
+            this.txtRch12.Location = new System.Drawing.Point(156, 153);
             this.txtRch12.MaxLength = 6;
             this.txtRch12.Name = "txtRch12";
             this.txtRch12.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3152,7 +3143,7 @@ namespace NB_iot
             // txtRch8
             // 
             this.txtRch8.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtRch8.Location = new System.Drawing.Point(156, 230);
+            this.txtRch8.Location = new System.Drawing.Point(156, 36);
             this.txtRch8.MaxLength = 6;
             this.txtRch8.Name = "txtRch8";
             this.txtRch8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3164,7 +3155,7 @@ namespace NB_iot
             // txtDch10
             // 
             this.txtDch10.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtDch10.Location = new System.Drawing.Point(273, 289);
+            this.txtDch10.Location = new System.Drawing.Point(273, 95);
             this.txtDch10.MaxLength = 6;
             this.txtDch10.Name = "txtDch10";
             this.txtDch10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3212,7 +3203,7 @@ namespace NB_iot
             // txtRch11
             // 
             this.txtRch11.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtRch11.Location = new System.Drawing.Point(156, 318);
+            this.txtRch11.Location = new System.Drawing.Point(156, 124);
             this.txtRch11.MaxLength = 6;
             this.txtRch11.Name = "txtRch11";
             this.txtRch11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3236,7 +3227,7 @@ namespace NB_iot
             // txtRch7
             // 
             this.txtRch7.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtRch7.Location = new System.Drawing.Point(156, 201);
+            this.txtRch7.Location = new System.Drawing.Point(156, 7);
             this.txtRch7.MaxLength = 6;
             this.txtRch7.Name = "txtRch7";
             this.txtRch7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3248,7 +3239,7 @@ namespace NB_iot
             // txtMch9
             // 
             this.txtMch9.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtMch9.Location = new System.Drawing.Point(384, 260);
+            this.txtMch9.Location = new System.Drawing.Point(384, 66);
             this.txtMch9.MaxLength = 3;
             this.txtMch9.Name = "txtMch9";
             this.txtMch9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3260,7 +3251,7 @@ namespace NB_iot
             // txtXch9
             // 
             this.txtXch9.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtXch9.Location = new System.Drawing.Point(331, 260);
+            this.txtXch9.Location = new System.Drawing.Point(331, 66);
             this.txtXch9.MaxLength = 6;
             this.txtXch9.Name = "txtXch9";
             this.txtXch9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3308,7 +3299,7 @@ namespace NB_iot
             // txtLch12
             // 
             this.txtLch12.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtLch12.Location = new System.Drawing.Point(98, 347);
+            this.txtLch12.Location = new System.Drawing.Point(98, 153);
             this.txtLch12.MaxLength = 6;
             this.txtLch12.Name = "txtLch12";
             this.txtLch12.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3332,7 +3323,7 @@ namespace NB_iot
             // txtLch8
             // 
             this.txtLch8.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtLch8.Location = new System.Drawing.Point(98, 230);
+            this.txtLch8.Location = new System.Drawing.Point(98, 36);
             this.txtLch8.MaxLength = 6;
             this.txtLch8.Name = "txtLch8";
             this.txtLch8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3344,7 +3335,7 @@ namespace NB_iot
             // txtRch10
             // 
             this.txtRch10.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtRch10.Location = new System.Drawing.Point(157, 289);
+            this.txtRch10.Location = new System.Drawing.Point(157, 95);
             this.txtRch10.MaxLength = 6;
             this.txtRch10.Name = "txtRch10";
             this.txtRch10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3392,7 +3383,7 @@ namespace NB_iot
             // txtLch11
             // 
             this.txtLch11.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtLch11.Location = new System.Drawing.Point(98, 318);
+            this.txtLch11.Location = new System.Drawing.Point(98, 124);
             this.txtLch11.MaxLength = 6;
             this.txtLch11.Name = "txtLch11";
             this.txtLch11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3416,7 +3407,7 @@ namespace NB_iot
             // txtLch7
             // 
             this.txtLch7.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtLch7.Location = new System.Drawing.Point(98, 201);
+            this.txtLch7.Location = new System.Drawing.Point(98, 7);
             this.txtLch7.MaxLength = 6;
             this.txtLch7.Name = "txtLch7";
             this.txtLch7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3428,7 +3419,7 @@ namespace NB_iot
             // txtDch9
             // 
             this.txtDch9.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtDch9.Location = new System.Drawing.Point(273, 260);
+            this.txtDch9.Location = new System.Drawing.Point(273, 66);
             this.txtDch9.MaxLength = 6;
             this.txtDch9.Name = "txtDch9";
             this.txtDch9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3464,7 +3455,7 @@ namespace NB_iot
             // txtBPch12
             // 
             this.txtBPch12.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtBPch12.Location = new System.Drawing.Point(40, 347);
+            this.txtBPch12.Location = new System.Drawing.Point(40, 153);
             this.txtBPch12.MaxLength = 6;
             this.txtBPch12.Name = "txtBPch12";
             this.txtBPch12.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3488,7 +3479,7 @@ namespace NB_iot
             // txtBPch8
             // 
             this.txtBPch8.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtBPch8.Location = new System.Drawing.Point(40, 230);
+            this.txtBPch8.Location = new System.Drawing.Point(40, 36);
             this.txtBPch8.MaxLength = 6;
             this.txtBPch8.Name = "txtBPch8";
             this.txtBPch8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3500,7 +3491,7 @@ namespace NB_iot
             // txtLch10
             // 
             this.txtLch10.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtLch10.Location = new System.Drawing.Point(99, 289);
+            this.txtLch10.Location = new System.Drawing.Point(99, 95);
             this.txtLch10.MaxLength = 6;
             this.txtLch10.Name = "txtLch10";
             this.txtLch10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3536,7 +3527,7 @@ namespace NB_iot
             // txtBPch11
             // 
             this.txtBPch11.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtBPch11.Location = new System.Drawing.Point(40, 318);
+            this.txtBPch11.Location = new System.Drawing.Point(40, 124);
             this.txtBPch11.MaxLength = 6;
             this.txtBPch11.Name = "txtBPch11";
             this.txtBPch11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3560,7 +3551,7 @@ namespace NB_iot
             // txtBPch7
             // 
             this.txtBPch7.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtBPch7.Location = new System.Drawing.Point(40, 201);
+            this.txtBPch7.Location = new System.Drawing.Point(40, 7);
             this.txtBPch7.MaxLength = 6;
             this.txtBPch7.Name = "txtBPch7";
             this.txtBPch7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3572,7 +3563,7 @@ namespace NB_iot
             // txtRch9
             // 
             this.txtRch9.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtRch9.Location = new System.Drawing.Point(157, 260);
+            this.txtRch9.Location = new System.Drawing.Point(157, 66);
             this.txtRch9.MaxLength = 6;
             this.txtRch9.Name = "txtRch9";
             this.txtRch9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3608,7 +3599,7 @@ namespace NB_iot
             // txtBPch10
             // 
             this.txtBPch10.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtBPch10.Location = new System.Drawing.Point(41, 289);
+            this.txtBPch10.Location = new System.Drawing.Point(41, 95);
             this.txtBPch10.MaxLength = 6;
             this.txtBPch10.Name = "txtBPch10";
             this.txtBPch10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3644,7 +3635,7 @@ namespace NB_iot
             // txtLch9
             // 
             this.txtLch9.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtLch9.Location = new System.Drawing.Point(99, 260);
+            this.txtLch9.Location = new System.Drawing.Point(99, 66);
             this.txtLch9.MaxLength = 6;
             this.txtLch9.Name = "txtLch9";
             this.txtLch9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3680,7 +3671,7 @@ namespace NB_iot
             // txtBPch9
             // 
             this.txtBPch9.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtBPch9.Location = new System.Drawing.Point(41, 260);
+            this.txtBPch9.Location = new System.Drawing.Point(41, 66);
             this.txtBPch9.MaxLength = 6;
             this.txtBPch9.Name = "txtBPch9";
             this.txtBPch9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3772,7 +3763,7 @@ namespace NB_iot
             // 
             this.label76.AutoSize = true;
             this.label76.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label76.Location = new System.Drawing.Point(3, 350);
+            this.label76.Location = new System.Drawing.Point(3, 156);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(39, 16);
             this.label76.TabIndex = 1;
@@ -3802,7 +3793,7 @@ namespace NB_iot
             // 
             this.label72.AutoSize = true;
             this.label72.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label72.Location = new System.Drawing.Point(10, 233);
+            this.label72.Location = new System.Drawing.Point(10, 39);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(32, 16);
             this.label72.TabIndex = 1;
@@ -3822,7 +3813,7 @@ namespace NB_iot
             // 
             this.label75.AutoSize = true;
             this.label75.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label75.Location = new System.Drawing.Point(3, 321);
+            this.label75.Location = new System.Drawing.Point(3, 127);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(39, 16);
             this.label75.TabIndex = 1;
@@ -3842,7 +3833,7 @@ namespace NB_iot
             // 
             this.label71.AutoSize = true;
             this.label71.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label71.Location = new System.Drawing.Point(10, 204);
+            this.label71.Location = new System.Drawing.Point(10, 10);
             this.label71.Name = "label71";
             this.label71.Size = new System.Drawing.Size(32, 16);
             this.label71.TabIndex = 1;
@@ -3862,7 +3853,7 @@ namespace NB_iot
             // 
             this.label74.AutoSize = true;
             this.label74.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label74.Location = new System.Drawing.Point(3, 292);
+            this.label74.Location = new System.Drawing.Point(3, 98);
             this.label74.Name = "label74";
             this.label74.Size = new System.Drawing.Size(39, 16);
             this.label74.TabIndex = 1;
@@ -3902,7 +3893,7 @@ namespace NB_iot
             // 
             this.label73.AutoSize = true;
             this.label73.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label73.Location = new System.Drawing.Point(11, 263);
+            this.label73.Location = new System.Drawing.Point(11, 69);
             this.label73.Name = "label73";
             this.label73.Size = new System.Drawing.Size(32, 16);
             this.label73.TabIndex = 1;
@@ -4453,14 +4444,14 @@ namespace NB_iot
             this.txtSysTime.Location = new System.Drawing.Point(99, 12);
             this.txtSysTime.Name = "txtSysTime";
             this.txtSysTime.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtSysTime.Size = new System.Drawing.Size(210, 23);
+            this.txtSysTime.Size = new System.Drawing.Size(177, 23);
             this.txtSysTime.TabIndex = 10;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label7.Location = new System.Drawing.Point(34, 15);
+            this.label7.Location = new System.Drawing.Point(37, 15);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 16);
             this.label7.TabIndex = 1;
@@ -4711,6 +4702,103 @@ namespace NB_iot
             this.toolTip1.InitialDelay = 100;
             this.toolTip1.ReshowDelay = 20;
             // 
+            // panelCH
+            // 
+            this.panelCH.Controls.Add(this.boxType8);
+            this.panelCH.Controls.Add(this.boxType7);
+            this.panelCH.Controls.Add(this.boxType6);
+            this.panelCH.Controls.Add(this.boxType5);
+            this.panelCH.Controls.Add(this.boxData8);
+            this.panelCH.Controls.Add(this.boxID8);
+            this.panelCH.Controls.Add(this.boxData7);
+            this.panelCH.Controls.Add(this.boxData6);
+            this.panelCH.Controls.Add(this.boxID7);
+            this.panelCH.Controls.Add(this.boxData5);
+            this.panelCH.Controls.Add(this.boxID6);
+            this.panelCH.Controls.Add(this.boxID5);
+            this.panelCH.Controls.Add(this.label57);
+            this.panelCH.Controls.Add(this.label56);
+            this.panelCH.Controls.Add(this.label55);
+            this.panelCH.Controls.Add(this.label54);
+            this.panelCH.Location = new System.Drawing.Point(12, 164);
+            this.panelCH.Name = "panelCH";
+            this.panelCH.Size = new System.Drawing.Size(324, 128);
+            this.panelCH.TabIndex = 11;
+            // 
+            // panelAD
+            // 
+            this.panelAD.Controls.Add(this.txtCH10);
+            this.panelAD.Controls.Add(this.txtCH8);
+            this.panelAD.Controls.Add(this.txtCH12);
+            this.panelAD.Controls.Add(this.label43);
+            this.panelAD.Controls.Add(this.label31);
+            this.panelAD.Controls.Add(this.label42);
+            this.panelAD.Controls.Add(this.label35);
+            this.panelAD.Controls.Add(this.label30);
+            this.panelAD.Controls.Add(this.label29);
+            this.panelAD.Controls.Add(this.txtCH9);
+            this.panelAD.Controls.Add(this.txtCH7);
+            this.panelAD.Controls.Add(this.txtCH11);
+            this.panelAD.Location = new System.Drawing.Point(5, 161);
+            this.panelAD.Name = "panelAD";
+            this.panelAD.Size = new System.Drawing.Size(255, 143);
+            this.panelAD.TabIndex = 13;
+            // 
+            // panelCHG
+            // 
+            this.panelCHG.Controls.Add(this.txtCch12);
+            this.panelCHG.Controls.Add(this.txtCch8);
+            this.panelCHG.Controls.Add(this.txtCch11);
+            this.panelCHG.Controls.Add(this.txtCch7);
+            this.panelCHG.Controls.Add(this.txtCch10);
+            this.panelCHG.Controls.Add(this.txtCch9);
+            this.panelCHG.Controls.Add(this.txtMch12);
+            this.panelCHG.Controls.Add(this.txtXch12);
+            this.panelCHG.Controls.Add(this.txtDch12);
+            this.panelCHG.Controls.Add(this.txtMch8);
+            this.panelCHG.Controls.Add(this.txtXch8);
+            this.panelCHG.Controls.Add(this.txtDch8);
+            this.panelCHG.Controls.Add(this.txtMch11);
+            this.panelCHG.Controls.Add(this.txtXch11);
+            this.panelCHG.Controls.Add(this.txtMch7);
+            this.panelCHG.Controls.Add(this.txtXch7);
+            this.panelCHG.Controls.Add(this.txtDch11);
+            this.panelCHG.Controls.Add(this.txtDch7);
+            this.panelCHG.Controls.Add(this.txtMch10);
+            this.panelCHG.Controls.Add(this.txtXch10);
+            this.panelCHG.Controls.Add(this.txtRch12);
+            this.panelCHG.Controls.Add(this.txtRch8);
+            this.panelCHG.Controls.Add(this.txtDch10);
+            this.panelCHG.Controls.Add(this.txtRch11);
+            this.panelCHG.Controls.Add(this.txtRch7);
+            this.panelCHG.Controls.Add(this.txtMch9);
+            this.panelCHG.Controls.Add(this.txtXch9);
+            this.panelCHG.Controls.Add(this.txtLch12);
+            this.panelCHG.Controls.Add(this.txtLch8);
+            this.panelCHG.Controls.Add(this.txtRch10);
+            this.panelCHG.Controls.Add(this.txtLch11);
+            this.panelCHG.Controls.Add(this.txtLch7);
+            this.panelCHG.Controls.Add(this.txtDch9);
+            this.panelCHG.Controls.Add(this.txtBPch12);
+            this.panelCHG.Controls.Add(this.txtBPch8);
+            this.panelCHG.Controls.Add(this.txtLch10);
+            this.panelCHG.Controls.Add(this.txtBPch11);
+            this.panelCHG.Controls.Add(this.txtBPch7);
+            this.panelCHG.Controls.Add(this.txtRch9);
+            this.panelCHG.Controls.Add(this.txtBPch10);
+            this.panelCHG.Controls.Add(this.txtLch9);
+            this.panelCHG.Controls.Add(this.txtBPch9);
+            this.panelCHG.Controls.Add(this.label76);
+            this.panelCHG.Controls.Add(this.label72);
+            this.panelCHG.Controls.Add(this.label75);
+            this.panelCHG.Controls.Add(this.label71);
+            this.panelCHG.Controls.Add(this.label74);
+            this.panelCHG.Controls.Add(this.label73);
+            this.panelCHG.Location = new System.Drawing.Point(0, 194);
+            this.panelCHG.Name = "panelCHG";
+            this.panelCHG.Size = new System.Drawing.Size(416, 185);
+            this.panelCHG.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4779,6 +4867,12 @@ namespace NB_iot
             this.groupBox8.PerformLayout();
             this.tabCRC.ResumeLayout(false);
             this.tabCRC.PerformLayout();
+            this.panelCH.ResumeLayout(false);
+            this.panelCH.PerformLayout();
+            this.panelAD.ResumeLayout(false);
+            this.panelAD.PerformLayout();
+            this.panelCHG.ResumeLayout(false);
+            this.panelCHG.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5154,6 +5248,13 @@ namespace NB_iot
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.CheckBox chkASCII;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ComboBox boxMachine;
+        private System.Windows.Forms.ComboBox boxFunc;
+        private System.Windows.Forms.Button btnSetMo;
+        private System.Windows.Forms.Button btnReadMo;
+        private System.Windows.Forms.Panel panelAD;
+        private System.Windows.Forms.Panel panelCH;
+        private System.Windows.Forms.Panel panelCHG;
     }
 }
 

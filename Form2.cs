@@ -14,18 +14,48 @@ using System.Windows.Forms;
 using GonDo_Modbus;
 
 
+enum enum_machine
+{
+    RT200Pro,
+    RT200Mini,
+    RT200One,
+};
+
+
 namespace NB_iot
 {
     public partial class Form2 : Form
     {
 
         FileFloder ff = new FileFloder();
-       
 
+        private enum_machine mode { get; set; } = 0;
     
-        public Form2()
+        public Form2(int mode)
         {
             InitializeComponent();
+
+           
+
+            this.mode = (enum_machine)mode;       //0=pro else  mini
+            checkDataGride();
+        }
+        private void checkDataGride()
+        {
+            if (this.mode == enum_machine.RT200Pro)
+            {
+                radPro.Checked = true;
+                radMini.Checked = false;
+                dataGridView1.Visible = true;
+                dataGridView2.Visible = false;
+            }
+            else
+            {
+                radPro.Checked = false;
+                radMini.Checked = true;
+                dataGridView1.Visible = false;
+                dataGridView2.Visible = true;
+            }
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -142,6 +172,8 @@ namespace NB_iot
         private void btnConvert_Click(object sender, EventArgs e)
         {
             int i = 0,j=0,value=0,cnt=0,len;
+            int step_len = 80;
+            int ch_len = 12;     //di(8)+ai(4)=12
 
             byte[] code = new byte[80];
             string[] f1 = new string[23];  
@@ -152,8 +184,21 @@ namespace NB_iot
             }
             f1[0] = "A";
             f1[0] = "2";
-            len= code.Length - (code.Length%80);
-            for (i=0;i<len ;i+=80)
+            if(mode== enum_machine.RT200Pro)
+            {
+                step_len = 80;
+
+
+            }
+            else
+            {
+                step_len = 50;
+                ch_len = 6;         //di(4)+ai(2)=6
+            }
+
+
+            len= code.Length - (code.Length% step_len);
+            for (i=0;i<len ;i+= step_len)
             {
                 cnt++;
                 f1[0] = Convert.ToString(cnt);
@@ -161,27 +206,53 @@ namespace NB_iot
                 f1[2] = BitConverter.ToSingle(code, i+2).ToString("F3");                //bat
                 f1[3] = getdate(BitConverter.ToUInt32(code,i+6).ToString());            //date
                 f1[4] = System.Text.Encoding.ASCII.GetString(code, i+10, 8);            //station
-                for(j=0;j<12;j++)
-                    f1[j+5] = BitConverter.ToSingle(code, i+18+j*4).ToString("F4");     //ch1~ch12
-                f1[17]= BitConverter.ToSingle(code,i+66).ToString();                    //rain
-                f1[18] = Convert.ToString(code[i + 70]);                                //door
-                if (code[i + 71] == 0)                                                  //sim
-                    f1[19] = "eMTC";
-                else
-                    f1[19] = "NBIoT";
-                for (j = 0; j < 3; j++)                                                 //single
+                for(j=0;j<ch_len;j++)
+                    f1[j+5] = BitConverter.ToSingle(code, i+18+j*4).ToString("F4");     //ch1~ch12,AI1~4/ ch1~ch4, AI1~2
+
+
+                if (mode == enum_machine.RT200Pro)
                 {
-                    Array.Reverse(code, i + 72 + j*2, 2);
-                    value = BitConverter.ToUInt16(code, i + 72 + j * 2)-32767;                 
-                    f1[20+j] = value.ToString();
+                    f1[17] = BitConverter.ToSingle(code, i + 66).ToString();                    //rain
+                    f1[18] = Convert.ToString(code[i + 70]);                                //door
+                    if (code[i + 71] == 0)                                                  //sim
+                        f1[19] = "eMTC";
+                    else
+                        f1[19] = "NBIoT";
+                    for (j = 0; j < 3; j++)                                                 //single
+                    {
+                        Array.Reverse(code, i + 72 + j * 2, 2);
+                        value = BitConverter.ToUInt16(code, i + 72 + j * 2) - 32767;
+                        f1[20 + j] = value.ToString();
+                    }
+                    dataGridView1.Rows.Add(f1);
+
                 }
-                dataGridView1.Rows.Add(f1);
+                else
+                {
+                    f1[11] = BitConverter.ToSingle(code, i + 42).ToString();        //rain
+                    Array.Reverse(code, i + 46 , 2);                                //RSRP
+                    value = BitConverter.ToUInt16(code, i + 46) - 32767;
+                    f1[12] = value.ToString();
+                    dataGridView2.Rows.Add(f1);
+                } 
             }
         }
 
         private void btnclr_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Clear();
+            if(mode== enum_machine.RT200Pro)
+                dataGridView1.Rows.Clear();
+            else
+                dataGridView2.Rows.Clear();
+        }
+
+        private void radPro_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radPro.Checked == true)
+                mode = enum_machine.RT200Pro;
+            else
+                mode = enum_machine.RT200Mini;
+            checkDataGride();
         }
     }
  }

@@ -27,7 +27,8 @@ namespace NB_iot
         public byte[] t = new byte[20];      //傳送指令暫存位置
         public string str1, str2,cmdstr;
         public int i, j;
-      
+        public int Machinemode { get; set; }=0;
+        public int OneFunc { get; set; } = 0;
 
 
         public Form1()
@@ -303,6 +304,37 @@ namespace NB_iot
             if ((data[offset+1] & 0x2) != 0)
                 boxNB9.Checked = true;
         }
+
+        public void saveMachine()
+        {
+            Machinemode = boxMachine.SelectedIndex;
+            OneFunc = boxFunc.SelectedIndex;
+
+            if (Machinemode == 0)   //RT200Pro
+            {
+                label40.Text = "CH5(DI5)";
+                label41.Text = "CH6(DI6)";
+                panelAD.Visible = panelCH.Visible = panelCHG.Visible = true;
+                label32.Visible = txtDoor.Visible = true;
+                radAI3.Visible = radAI4.Visible = true;
+               
+            }
+            else
+            {
+                label40.Text = "CH5(AI1)";
+                label41.Text = "CH6(AI2)";
+                panelAD.Visible = panelCH.Visible= panelCHG.Visible  =false;
+                radAI3.Visible = radAI4.Visible =false;
+                label32.Visible = txtDoor.Visible = false;
+            }
+
+
+
+
+
+
+
+        }
         //********************** Read  *********************************************
         void GetUartCMD(string cmd)
         {
@@ -338,6 +370,16 @@ namespace NB_iot
                 if(cmd.IndexOf("SID")!=-1)
                 {
                     txtnowID.Text=System.Text.Encoding.ASCII.GetString(RXReg, 1, 2).Trim();
+                }
+
+                if (cmd.IndexOf("RMO") != -1)           //讀取設定模式
+                {
+                    size = cmd.IndexOf("RMO")+3;
+                    boxMachine.SelectedIndex =RXReg[size]-'0';
+                    boxFunc.SelectedIndex = RXReg[size+1] - '0';
+                    boxMachine.Text = boxMachine.SelectedItem.ToString();
+                    boxFunc.Text = boxFunc.SelectedItem.ToString();         
+                    saveMachine();      //將值放入 Machinemode 和 OneFunc
                 }
 
                 if (cmd.IndexOf("RBA") != -1)      //讀取band 狀態
@@ -454,32 +496,48 @@ namespace NB_iot
                     size += 3;// cmd.IndexOf("GAD") + 3;
                     b = RXReg[size];
                     size += 1;
+
+                   
+
                     txtCH1.Text = BitConverter.ToSingle(RXReg, size).ToString();// marco.Long2Str(RXReg , size );
                     txtCH2.Text = BitConverter.ToSingle(RXReg, size + 4).ToString();// marco.Long2Str(RXReg , size );
                     txtCH3.Text = BitConverter.ToSingle(RXReg, size + 8).ToString();// marco.Long2Str(RXReg , size );
                     txtCH4.Text = BitConverter.ToSingle(RXReg, size + 12).ToString();// marco.Long2Str(RXReg , size );
-                    txtCH5.Text = BitConverter.ToSingle(RXReg, size + 16).ToString();// marco.Long2Str(RXReg , size );
-                    txtCH6.Text = BitConverter.ToSingle(RXReg, size + 20).ToString();// marco.Long2Str(RXReg , size );
-                    txtCH7.Text = BitConverter.ToSingle(RXReg, size + 24).ToString();// marco.Long2Str(RXReg , size );
-                    txtCH8.Text = BitConverter.ToSingle(RXReg, size + 28).ToString();// marco.Long2Str(RXReg , size );
-                    size += 32;
-                    /*      if (b == 'R')// (RXReg[size-1]=='R')        //RAW data=long int
-                          {
-                              txtCH9.Text = BitConverter.ToInt32(RXReg, size).ToString();// marco.Long2Str(RXReg , size );
-                              txtCH10.Text = BitConverter.ToInt32(RXReg, size + 4).ToString();// marco.Long2Str(RXReg , size +4);
-                              txtCH11.Text = BitConverter.ToInt32(RXReg, size + 8).ToString();// marco.Long2Str(RXReg , size +8);
-                              txtCH12.Text = BitConverter.ToInt32(RXReg, size + 12).ToString();// marco.Long2Str(RXReg , size +12);
-                          }
-                          else
-                          {*/
-                    txtCH9.Text = BitConverter.ToSingle(RXReg, size).ToString("F3");
-                    txtCH10.Text = BitConverter.ToSingle(RXReg, size + 4).ToString("F3");
-                    txtCH11.Text = BitConverter.ToSingle(RXReg, size + 8).ToString("F3");
-                    txtCH12.Text = BitConverter.ToSingle(RXReg, size + 12).ToString("F3");
-                    //    }
+
+                    if (Machinemode == 0)
+                    {
+                        txtCH5.Text = BitConverter.ToSingle(RXReg, size + 16).ToString();// marco.Long2Str(RXReg , size );
+                        txtCH6.Text = BitConverter.ToSingle(RXReg, size + 20).ToString();// marco.Long2Str(RXReg , size );
+                        txtCH7.Text = BitConverter.ToSingle(RXReg, size + 24).ToString();// marco.Long2Str(RXReg , size );
+                        txtCH8.Text = BitConverter.ToSingle(RXReg, size + 28).ToString();// marco.Long2Str(RXReg , size );
+                        size += 32;
+                        /*      if (b == 'R')// (RXReg[size-1]=='R')        //RAW data=long int
+                              {
+                                  txtCH9.Text = BitConverter.ToInt32(RXReg, size).ToString();// marco.Long2Str(RXReg , size );
+                                  txtCH10.Text = BitConverter.ToInt32(RXReg, size + 4).ToString();// marco.Long2Str(RXReg , size +4);
+                                  txtCH11.Text = BitConverter.ToInt32(RXReg, size + 8).ToString();// marco.Long2Str(RXReg , size +8);
+                                  txtCH12.Text = BitConverter.ToInt32(RXReg, size + 12).ToString();// marco.Long2Str(RXReg , size +12);
+                              }
+                              else
+                              {*/
+                        txtCH9.Text = BitConverter.ToSingle(RXReg, size).ToString("F3");
+                        txtCH10.Text = BitConverter.ToSingle(RXReg, size + 4).ToString("F3");
+                        txtCH11.Text = BitConverter.ToSingle(RXReg, size + 8).ToString("F3");
+                        txtCH12.Text = BitConverter.ToSingle(RXReg, size + 12).ToString("F3");
+                        //    }
+                      
+
+                    }
+                    else
+                    {
+                        size += 32;
+                        txtCH5.Text = BitConverter.ToSingle(RXReg, size).ToString("F3");
+                        txtCH6.Text = BitConverter.ToSingle(RXReg, size + 4).ToString("F3");
+                    }
                     size += 16;
                     txtRain.Text = BitConverter.ToSingle(RXReg, size).ToString("F3");
-                    txtDoor.Text = System.Text.Encoding.ASCII.GetString(RXReg, size + 4, 1);
+                    if(Machinemode==0)
+                        txtDoor.Text = System.Text.Encoding.ASCII.GetString(RXReg, size + 4, 1);
                     //  btnReadAI.Enabled = true;
 
                 }
@@ -497,9 +555,9 @@ namespace NB_iot
                     GetType(RXReg, boxType8, boxID8, boxData8, size + 21);
                     cbobaud.Text = Convert.ToString(marco.byte2int(RXReg, size + 24));
                 }
-                else if ((size = cmd.IndexOf("CVR")) != -1)         //讀取版本
+                else if ((size = cmd.IndexOf("VER")) != -1)         //讀取版本
                 {
-                    txtver.Text = System.Text.Encoding.ASCII.GetString(RXReg, size + 4, 2).Trim();  //跳過命令(3)及,(1)
+                    txtver.Text = System.Text.Encoding.ASCII.GetString(RXReg, size + 4, 4).Trim();  //跳過命令(3)及,(1)
                 }
                 else if ((size = cmd.IndexOf("RUR")) != -1)         //讀取狀態
                 {
@@ -543,14 +601,25 @@ namespace NB_iot
                     float f;
                     size = cmd.IndexOf("RAI") + 4;
                     f = BitConverter.ToSingle(RXReg, size + 1);
-                    if (RXReg[size] == 0x31)
-                        txtCH9.Text = f.ToString("F3");    // ("#00.00");// Convert.ToString(f,2f);
-                    else if (RXReg[size] == 0x32)
-                        txtCH10.Text = f.ToString("F3");    // ("#00.00");// Convert.ToString(f,2f);
-                    else if (RXReg[size] == 0x33)
-                        txtCH11.Text = f.ToString("F3");    // ("#00.00");// Convert.ToString(f,2f);
-                    else if (RXReg[size] == 0x34)
-                        txtCH12.Text = f.ToString("F3");    // ("#00.00");// Convert.ToString(f,2f);
+
+                    if (Machinemode == 0)
+                    {
+                        if (RXReg[size] == 0x31)
+                            txtCH9.Text = f.ToString("F3");    // ("#00.00");// Convert.ToString(f,2f);
+                        else if (RXReg[size] == 0x32)
+                            txtCH10.Text = f.ToString("F3");    // ("#00.00");// Convert.ToString(f,2f);
+                        else if (RXReg[size] == 0x33)
+                            txtCH11.Text = f.ToString("F3");    // ("#00.00");// Convert.ToString(f,2f);
+                        else if (RXReg[size] == 0x34)
+                            txtCH12.Text = f.ToString("F3");    // ("#00.00");// Convert.ToString(f,2f);
+                    }
+                    else
+                    {
+                        if (RXReg[size] == 0x31)
+                            txtCH5.Text = f.ToString("F3");    // ("#00.00");// Convert.ToString(f,2f);
+                        else if (RXReg[size] == 0x32)
+                            txtCH6.Text = f.ToString("F3");    // ("#00.00");// Convert.ToString(f,2f);
+                    }
                 }
             }
         }
@@ -588,8 +657,24 @@ namespace NB_iot
         string S_RTC_SetAE = "$01TIE";          //設定AE 
         string S_SUR    = "$01SUR";          //設定Uart顯示資訊 
         string S_RUR = "$01RUR";            //讀取Uart顯示資訊 
-        string S_TST = "$TST";             //測試硬體       
+        string S_TST = "$TST";             //測試硬體
+        string S_SMO = "$01SMO";             //設定機種
+        string S_RMO = "$01RMO";             //讀取機種                                     
 
+        private void btnReadMo_Click(object sender, EventArgs e)
+        {
+            SetTitle(ref TXReg, S_RMO);
+            SendEnd(ref TXReg, S_RMO.Length);
+        }
+
+        private void btnSetMo_Click(object sender, EventArgs e)
+        {       
+            SetTitle(ref TXReg, S_SMO);
+            TXReg[S_SMO.Length] = (byte)(boxMachine.SelectedIndex + '0');
+            TXReg[S_SMO.Length + 1] = (byte)(boxFunc.SelectedIndex + '0');
+            SendEnd(ref TXReg, S_SMO.Length + 2);
+            saveMachine();      //將值放入 Machinemode 和 OneFunc
+        }
         private void btnTest_Click(object sender, EventArgs e)
         {
             /*
@@ -708,7 +793,7 @@ namespace NB_iot
             chkHour.Checked = chkMin.Checked = chkSec.Checked = chkAF.Checked = chkIE.Checked = false;
             txtStation.Text = boxCycleHour.Text = boxCycleMin.Text = boxCycleSec.Text = "";
             chkRec.Checked = chkCrycle.Checked = false;
-
+            boxFunc.Text = boxMachine.Text = "";            //21.12.27
 
             SetTitle(ref TXReg, R_RTC_DATE);
             SendEnd(ref TXReg, R_RTC_DATE.Length);
@@ -743,7 +828,7 @@ namespace NB_iot
         string S_RME = "$RME";           //讀取IMEI
         string S_RDB = "$RDB";          //讀取訊號強度
                                         //    string S_VER = "$VER";          //讀取版本
-        string S_CVR = "$CVR";          //讀取程式版本
+        string S_VER = "$01VER";          //讀取程式版本
         string S_REC_Clr = "$01CLR";    //清除記錄和傳送筆數
       
         private void btnRec_Click(object sender, EventArgs e)   //讀取紀錄/傳送筆數
@@ -958,10 +1043,7 @@ namespace NB_iot
                 TXReg[S_SID.Length + i] = byteArray[i];
             SendEnd(ref TXReg, S_SID.Length + 2);
         }
-        private void btnSetID_Click(object sender, EventArgs e)     //設置ID
-        {
 
-        }
 
 
         private void btnSetType_Click(object sender, EventArgs e)   //設定/讀取 TYPE
@@ -1007,8 +1089,8 @@ namespace NB_iot
 
         private void btnVer_Click(object sender, EventArgs e)
         {
-            SetTitle(ref TXReg, S_CVR);
-            SendEnd(ref TXReg, S_CVR.Length);        
+            SetTitle(ref TXReg, S_VER);
+            SendEnd(ref TXReg, S_VER.Length);        
         }
         private void timer3_Tick(object sender, EventArgs e)
         {
@@ -1036,8 +1118,8 @@ namespace NB_iot
                 }
                 else
                 {
-                    SetTitle(ref TXReg, S_CVR);
-                    SendEnd(ref TXReg, S_CVR.Length);  
+                    SetTitle(ref TXReg, S_VER);
+                    SendEnd(ref TXReg, S_VER.Length);  
                 }        
             }
             else if (APCnt == 3)
@@ -1051,7 +1133,7 @@ namespace NB_iot
                 {
                      SetTitle(ref TXReg, S_ReadRec);
                     SendEnd(ref TXReg, S_ReadRec.Length);
-                    timer3.Enabled = false;
+                //    timer3.Enabled = false;
                 }
             }
             else if (APCnt == 4)
@@ -1060,13 +1142,14 @@ namespace NB_iot
                 {
                     SetTitle(ref TXReg, S_RDB);
                     SendEnd(ref TXReg, S_RDB.Length);
-                    timer3.Enabled = false;
+            
                 }
-          /*      else
-                {
-               
+                else
+                {  
+                    SetTitle(ref TXReg, S_RMO);
+                    SendEnd(ref TXReg, S_RMO.Length);
                 }
-                timer3.Enabled = false;*/
+                timer3.Enabled = false;
             }
         }
         private void btnReadNet_Click(object sender, EventArgs e)
@@ -1313,7 +1396,7 @@ namespace NB_iot
 
         private void btnSn_Click(object sender, EventArgs e)
         {
-            Form2 f2 = new Form2();
+            Form2 f2 = new Form2(boxMachine.SelectedIndex);
             f2.Show();
 
 
@@ -1479,6 +1562,7 @@ namespace NB_iot
         private void timAD_Tick(object sender, EventArgs e)
         {
             byte b;
+          
             SetTitle(ref TXReg, R_AIV);
             TXReg[R_AIV.Length] = (byte)'C';            //計算後的值
             if (radRaw.Checked)
@@ -1494,7 +1578,14 @@ namespace NB_iot
             TXReg[R_AIV.Length+1] = b;        //CH4
             SendEnd(ref TXReg, R_AIV.Length + 2);
             Count++;
-            if (Count > 3)
+
+
+            if (Machinemode == 0)
+            {
+                if (Count > 3)
+                    Count = 0;
+            }
+            else if (Count > 1)
                 Count = 0;
         }
 
@@ -1509,7 +1600,10 @@ namespace NB_iot
             }
             else
             {
-                txtCH9.Text = txtCH10.Text = txtCH11.Text = txtCH12.Text = "";
+                if (Machinemode == 0)
+                    txtCH9.Text = txtCH10.Text = txtCH11.Text = txtCH12.Text = "";
+                else
+                    txtCH5.Text = txtCH6.Text = "";
                 Count = 0;
                 timAD.Enabled = true;
                 btnContinue.BackColor = Color.GreenYellow;
@@ -1563,14 +1657,8 @@ namespace NB_iot
                 }
                 else
                 {
-
-
                     if (CmdStart_f && ReadCnt != 0)
                         ReadCnt = 0;
-
-
-
-
                     for (int i = 0; i < ByteCnt; i++)
                     {
 
